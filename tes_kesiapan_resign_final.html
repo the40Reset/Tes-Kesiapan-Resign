@@ -148,7 +148,7 @@ function checkCode(){
       try{build();}catch(e){alert('Error: '+e.message);}
     } else {
       inp.classList.add('err');
-      document.getElementById('lockErr').textContent='Kode salah. Coba: TES atau SIAP atau DHIMAS';
+      document.getElementById('lockErr').textContent='Kode salah. Cek email pembelian kamu.';
       setTimeout(()=>inp.classList.remove('err'),400);
     }
   }catch(e){alert('Error: '+e.message);}
@@ -252,7 +252,7 @@ const M=[
 ];
 
 // finD stores all finansial inputs
-let finD={tabungan:0,deposito:0,darurat:0,emas:0,pesangon:0,pokok:0,kpr:0,kendaraan:0,pendidikan:0,bpjs:0,transport:0,komunikasi:0,kesehatan:0,anak:0,gaya:0,buffer:0,freelance:0,bisnis:0,digital:0,passive:0,parttime:0};
+let finD={tabungan:0,deposito:0,darurat:0,emas:0,pesangon:0,pokok:0,kpr:0,kendaraan:0,pendidikan:0,bpjs:0,transport:0,komunikasi:0,kesehatan:0,anak:0,gaya:0,buffer:0};
 let scores={};
 let cur=-1;
 
@@ -284,7 +284,7 @@ function buildFin(){
   const r=(l,k,ph='0')=>`
     <div class="fin-row">
       <div class="fin-label">${l}</div>
-      <input type="number" inputmode="numeric" class="fin-input" placeholder="${ph}" min="0" oninput="upFin('${k}',this.value)">
+      <input type="number" inputmode="numeric" class="fin-input" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="${ph}" autocomplete="new-password" name="no-autocomplete-${k}" oninput="upFin('${k}',this.value.replace(/[^0-9]/g,''))">
     </div>`;
   return `
     <div class="fin-section-title">A. Aset yang bisa diandalkan sekarang</div>
@@ -307,18 +307,12 @@ function buildFin(){
     ${r('Kebutuhan anak lainnya','anak')}
     ${r('Gaya hidup minimal','gaya')}
     ${r('Buffer darurat','buffer')}
-    <div class="fin-section-title" style="margin-top:1.2rem;color:var(--yellow)">C. Income baru bulan pertama (setelah resign)</div>
-    <p class="fin-note warn">⚠️ Isi HANYA kalau sudah ada income alternatif yang benar-benar berjalan. Kalau belum ada sama sekali — biarkan kosong semua.</p>
-    ${r('Freelance / konsultasi','freelance','Kosongkan kalau belum ada')}
-    ${r('Bisnis / usaha yang sudah berjalan','bisnis','Kosongkan kalau belum ada')}
-    ${r('Digital product / konten','digital','Kosongkan kalau belum ada')}
-    ${r('Passive income','passive','Kosongkan kalau belum ada')}
-    ${r('Part-time / proyek sampingan','parttime','Kosongkan kalau belum ada')}
+
+
     <div class="fin-result" id="fRes">
       <div class="fr-row"><span class="fr-label">Total aset cair</span><span class="fr-val" id="fA">Rp 0</span></div>
       <div class="fr-row"><span class="fr-label">Total pengeluaran / bulan</span><span class="fr-val" id="fB">Rp 0</span></div>
-      <div class="fr-row"><span class="fr-label">Income baru / bulan</span><span class="fr-val green" id="fI">Rp 0</span></div>
-      <div class="fr-row"><span class="fr-label">Net burn / bulan</span><span class="fr-val" id="fN">Rp 0</span></div>
+
       <div class="fr-row" style="border-top:1px solid var(--gold);margin-top:.5rem">
         <span class="fr-label" style="color:var(--text);font-weight:600">⏰ Keluarga aman selama</span>
         <span class="fr-val runway-big" id="fR">—</span>
@@ -364,6 +358,24 @@ function countAnswered(modIdx){
   return {answered,total:m.qs.length};
 }
 
+function clearFinInputs(){
+  // Force clear all finansial inputs - prevent browser autocomplete
+  document.querySelectorAll('.fin-input').forEach(el=>{
+    el.value='';
+    el.setAttribute('value','');
+  });
+  // Reset all finD values
+  Object.keys(finD).forEach(k=>finD[k]=0);
+  // Reset display
+  ['fA','fB'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.textContent='Rp 0';
+  });
+  const fR=document.getElementById('fR');
+  if(fR){fR.textContent='—';fR.className='fr-val runway-big';}
+  delete scores['m1'];
+}
+
 function show(i){
   if(i>cur&&cur>=0){
     const {answered,total}=countAnswered(cur);
@@ -379,6 +391,8 @@ function show(i){
   cur=i;
   updateDots(i);
   window.scrollTo({top:0,behavior:'smooth'});
+  // Clear finansial inputs every time module 0 is shown
+  if(i===0) setTimeout(clearFinInputs, 100);
 }
 
 function showModErr(modIdx,remaining){
@@ -429,22 +443,20 @@ function upFin(k,v){
   finD[k]=parseInt(v)||0;
   const aset=finD.tabungan+finD.deposito+finD.darurat+finD.emas+finD.pesangon;
   const burn=finD.pokok+finD.kpr+finD.kendaraan+finD.pendidikan+finD.bpjs+finD.transport+finD.komunikasi+finD.kesehatan+finD.anak+finD.gaya+finD.buffer;
-  const inc=finD.freelance+finD.bisnis+finD.digital+finD.passive+finD.parttime;
-  const net=Math.max(0,burn-inc);
   const fmt=n=>'Rp '+n.toLocaleString('id-ID');
   const col=m=>m>=6?'green':m>=3?'yellow':'red';
-  document.getElementById('fA').textContent=fmt(aset);
-  document.getElementById('fB').textContent=fmt(burn);
-  document.getElementById('fI').textContent=fmt(inc);
-  document.getElementById('fN').textContent=fmt(net);
+  const fA=document.getElementById('fA'); if(fA) fA.textContent=fmt(aset);
+  const fB=document.getElementById('fB'); if(fB) fB.textContent=fmt(burn);
   const rEl=document.getElementById('fR');
   if(aset>0&&burn>0){
-    const mo=net>0?Math.floor(aset/net):99;
-    rEl.textContent=(mo>=99?'∞':mo)+' bulan';
-    rEl.className='fr-val runway-big '+col(mo>=99?12:mo);
+    const mo=Math.floor(aset/burn);
+    rEl.textContent=mo+' bulan';
+    rEl.style.fontSize='1.8rem';
+    rEl.className='fr-val runway-big '+col(mo);
     scores['m1']=mo>=12?100:mo>=6?75:mo>=3?45:20;
   } else {
     rEl.textContent='—';
+    rEl.style.fontSize='1.8rem';
     rEl.className='fr-val runway-big';
     delete scores['m1'];
   }
