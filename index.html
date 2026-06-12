@@ -6,29 +6,18 @@
 <title>Tes Kesiapan Resign — The 40 Reset</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --gold:#C9A84C;
-  --dark:#0A0A0F;
-  --card:#111118;
-  --border:#2A2A3A;
-  --text:#FFFFFF;
-  --muted:#AAAABC;
-  --red:#E05555;
-  --green:#1D9E75;
-  --yellow:#EF9F27;
-  --font:'Plus Jakarta Sans',sans-serif;
-}
+:root{--gold:#C9A84C;--dark:#0A0A0F;--card:#111118;--border:#2A2A3A;--text:#FFFFFF;--muted:#AAAABC;--red:#E05555;--green:#1D9E75;--yellow:#EF9F27;--font:'Plus Jakarta Sans',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{background:var(--dark);color:var(--text);font-family:var(--font);min-height:100vh;overflow-x:hidden;font-size:16px;line-height:1.6}
-
-/* LOCK */
 #lock{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem 1.5rem;flex-direction:column}
 .lock-inner{width:100%;max-width:420px;text-align:center}
 .lock-tag{font-size:11px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:2rem;font-weight:600}
 .lock-title{font-size:3rem;font-weight:800;line-height:1.05;margin-bottom:.5rem;color:var(--text)}
 .lock-title em{font-style:normal;color:var(--gold)}
 .lock-divider{width:48px;height:2px;background:var(--gold);margin:1.5rem auto;opacity:.6}
-.lock-sub{font-size:1rem;color:var(--muted);line-height:1.7;margin-bottom:2rem;font-weight:500}
+.lock-sub{font-size:1rem;color:var(--muted);line-height:1.7;margin-bottom:1.5rem;font-weight:500}
+.don-lock{background:rgba(201,168,76,.08);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:1rem 1.2rem;margin-bottom:1.5rem;text-align:left}
+.don-lock p{font-size:.88rem;color:var(--text);line-height:1.7;font-weight:500}
 .lock-input{width:100%;padding:1.1rem 1.2rem;background:var(--card);border:1.5px solid var(--border);color:var(--text);font-size:1.2rem;font-family:var(--font);font-weight:700;letter-spacing:.25em;text-align:center;text-transform:uppercase;border-radius:8px;outline:none;margin-bottom:.75rem;transition:border-color .2s}
 .lock-input:focus{border-color:var(--gold)}
 .lock-input.err{border-color:var(--red);animation:shake .3s}
@@ -37,8 +26,6 @@ body{background:var(--dark);color:var(--text);font-family:var(--font);min-height
 .lock-err{color:var(--red);font-size:.9rem;margin-top:.5rem;min-height:1.4rem;font-weight:500}
 .lock-hint{margin-top:1.5rem;font-size:.85rem;color:var(--muted)}
 .lock-hint a{color:var(--gold);text-decoration:none;font-weight:600}
-
-/* APP */
 #app{display:none}
 .topbar{position:sticky;top:0;z-index:50;background:rgba(10,10,15,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
 .topbar-brand{font-size:.9rem;color:var(--gold);letter-spacing:.08em;font-weight:700}
@@ -46,8 +33,6 @@ body{background:var(--dark);color:var(--text);font-family:var(--font);min-height
 .pdot{height:5px;width:7px;border-radius:3px;background:var(--border);transition:all .3s}
 .pdot.done{background:var(--gold);opacity:.5}
 .pdot.active{background:var(--gold);width:18px}
-
-/* COVER */
 #cover{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem 3rem;text-align:center}
 .cover-tag{font-size:11px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem;font-weight:600}
 .cover-title{font-size:3.2rem;font-weight:800;line-height:1.0;margin-bottom:.4rem;color:var(--text)}
@@ -58,8 +43,6 @@ body{background:var(--dark);color:var(--text);font-family:var(--font);min-height
 .cover-cta{display:inline-flex;align-items:center;gap:.5rem;padding:1.1rem 2rem;border:2px solid var(--gold);color:var(--gold);font-size:1rem;font-weight:700;background:transparent;border-radius:8px;cursor:pointer;width:100%;max-width:340px;justify-content:center;margin-bottom:2rem;min-height:52px;font-family:var(--font)}
 .cover-modules{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;max-width:360px}
 .cm{padding:.65rem .4rem;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:.75rem;font-weight:600;color:var(--muted);text-align:center;letter-spacing:.03em}
-
-/* MODULES */
 .mod{display:none;padding:1.5rem 1.5rem 5rem;max-width:580px;margin:0 auto;animation:fadeUp .3s ease}
 .mod.active{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
@@ -69,15 +52,11 @@ body{background:var(--dark);color:var(--text);font-family:var(--font);min-height
 .mod-story{font-size:1rem;font-weight:600;color:var(--text);line-height:1.8;border-left:3px solid var(--gold);padding-left:1.1rem;margin-bottom:1.2rem}
 .mod-tip{font-size:.9rem;font-weight:500;color:var(--text);line-height:1.7;padding:.85rem 1.1rem;background:var(--card);border-radius:6px;margin-bottom:1.8rem;border:1px solid var(--border)}
 .mod-tip strong{color:var(--gold)}
-
-/* SKIP MODULE BANNER */
 .skip-banner{background:var(--card);border:1.5px solid var(--border);border-radius:8px;padding:1.2rem;margin-bottom:1.5rem;text-align:center}
 .skip-banner p{font-size:.95rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;font-weight:500}
 .skip-btn{width:100%;padding:.9rem;background:transparent;border:1.5px solid var(--border);color:var(--muted);font-size:.9rem;font-weight:600;font-family:var(--font);border-radius:6px;cursor:pointer;min-height:48px}
 .skip-btn:hover{border-color:var(--gold);color:var(--gold)}
 .skip-btn.skipped{background:rgba(201,168,76,.1);border-color:var(--gold);color:var(--gold)}
-
-/* QUESTIONS */
 .q{margin-bottom:1.6rem}
 .q-text{font-size:1rem;font-weight:600;color:var(--text);line-height:1.6;margin-bottom:.4rem}
 .q-hint{font-size:.8rem;color:var(--muted);margin-bottom:.8rem;font-weight:500}
@@ -85,17 +64,13 @@ body{background:var(--dark);color:var(--text);font-family:var(--font);min-height
 .sq{flex:1;padding:.8rem 0;background:var(--card);border:1.5px solid var(--border);color:var(--text);font-size:1.05rem;font-weight:700;font-family:var(--font);cursor:pointer;border-radius:6px;transition:all .15s;text-align:center;min-height:52px}
 .sq:hover{border-color:var(--gold);color:var(--gold)}
 .sq.active{background:var(--gold);border-color:var(--gold);color:var(--dark);font-weight:800}
-.sq.irrelevant-active{background:rgba(170,170,188,.15);border-color:var(--muted);color:var(--muted)}
 .btn-irrelevant{padding:.65rem .7rem;background:transparent;border:1.5px solid var(--border);color:var(--muted);font-size:.72rem;font-weight:700;font-family:var(--font);cursor:pointer;border-radius:6px;transition:all .15s;text-align:center;min-height:52px;white-space:nowrap;flex-shrink:0}
 .btn-irrelevant:hover{border-color:var(--muted);color:var(--text)}
 .btn-irrelevant.active{background:rgba(170,170,188,.15);border-color:var(--muted);color:var(--muted);font-weight:700}
 .q-labels{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-top:.4rem;font-weight:500}
 .q-sep{height:1px;background:var(--border);margin:1.4rem 0;opacity:.3}
-
-/* FINANCIAL */
 .fin-section-title{font-size:.8rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin:1.5rem 0 .5rem;font-weight:700}
 .fin-note{font-size:.85rem;color:var(--muted);margin-bottom:.9rem;line-height:1.5;font-weight:500}
-.fin-note.warn{color:var(--yellow)}
 .fin-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.8rem}
 .fin-label{font-size:.9rem;color:var(--text);flex:1;line-height:1.4;font-weight:500}
 .fin-input{width:140px;flex-shrink:0;padding:.7rem .8rem;background:var(--card);border:1.5px solid var(--border);color:var(--text);font-size:.9rem;font-family:var(--font);font-weight:600;text-align:right;border-radius:6px;outline:none;-webkit-appearance:none;min-height:48px}
@@ -109,13 +84,9 @@ body{background:var(--dark);color:var(--text);font-family:var(--font);min-height
 .fr-val.green{color:var(--green)}
 .fr-val.yellow{color:var(--yellow)}
 .runway-big{font-size:2rem;font-weight:800}
-
-/* NAV */
 .nav-btns{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,15,.98);border-top:1px solid var(--border);padding:1rem 1.5rem;display:flex;gap:.75rem;z-index:40}
 .btn-back{padding:.9rem 1rem;background:transparent;border:1.5px solid var(--border);color:var(--muted);font-size:.9rem;font-weight:600;font-family:var(--font);cursor:pointer;border-radius:6px;flex-shrink:0;min-height:52px}
 .btn-next{flex:1;padding:.9rem;background:transparent;border:2px solid var(--gold);color:var(--gold);font-size:1rem;font-weight:700;font-family:var(--font);cursor:pointer;border-radius:6px;min-height:52px}
-
-/* DASHBOARD */
 #errScreen{display:none;min-height:100vh;align-items:center;justify-content:center;padding:2rem 1.5rem;flex-direction:column;text-align:center}
 #dash{display:none;padding:1.5rem 1.5rem 5rem;max-width:580px;margin:0 auto;animation:fadeUp .3s ease}
 #dash.active{display:block}
@@ -140,25 +111,21 @@ body{background:var(--dark);color:var(--text);font-family:var(--font);min-height
 </style>
 </head>
 <body>
-
 <div id="lock">
   <div class="lock-inner">
     <div class="lock-tag">The 40 Reset · by Dhimas Garendi</div>
     <h1 class="lock-title">Tes<br>Kesiapan<br><em>Resign</em></h1>
     <div class="lock-divider"></div>
     <p class="lock-sub">Masukkan kode akses dari email pembelian kamu.</p>
+    <div class="don-lock"><p>❤️ Setiap produk yang terjual — <b>10% langsung disumbangkan</b> ke yayasan yang membutuhkan. Bukan janji. Gue share buktinya setiap bulan.</p></div>
     <input type="text" id="codeInput" class="lock-input" placeholder="KODE AKSES" maxlength="10" autocomplete="off">
     <button class="lock-btn" onclick="checkCode()">Masuk →</button>
     <div id="lockErr" class="lock-err"></div>
     <p class="lock-hint">Belum punya kode? <a href="https://lynk.id/the_40_reset" target="_blank">Beli di sini →</a></p>
   </div>
 </div>
-
 <div id="app">
-  <div class="topbar">
-    <div class="topbar-brand">The 40 Reset</div>
-    <div class="progress-wrap" id="dots"></div>
-  </div>
+  <div class="topbar"><div class="topbar-brand">The 40 Reset</div><div class="progress-wrap" id="dots"></div></div>
   <div id="cover">
     <div class="cover-tag">by Dhimas Garendi</div>
     <h1 class="cover-title">Tes<br>Kesiapan<br><em>Resign</em></h1>
@@ -176,387 +143,175 @@ body{background:var(--dark);color:var(--text);font-family:var(--font);min-height
   <div id="mods"></div>
   <div id="dash"></div>
 </div>
-
 <script>
 const CODES=['TES','SIAP','DHIMAS','MULAI','BELI'];
-
-// Track which modules are skipped entirely
-const skippedModules = {};
-// Track which individual questions are marked irrelevant
-const irrelevantQs = {};
-
+const skippedModules={};
+const irrelevantQs={};
 function checkCode(){
   const v=document.getElementById('codeInput').value.toUpperCase().trim().replace(/[^A-Z0-9]/g,'');
   const inp=document.getElementById('codeInput');
-  if(CODES.includes(v)){
-    document.getElementById('lock').style.display='none';
-    document.getElementById('app').style.display='block';
-    build();
-  } else {
-    inp.classList.add('err');
-    document.getElementById('lockErr').textContent='Kode salah. Cek email pembelian kamu.';
-    setTimeout(()=>inp.classList.remove('err'),400);
-  }
+  if(CODES.includes(v)){document.getElementById('lock').style.display='none';document.getElementById('app').style.display='block';build();}
+  else{inp.classList.add('err');document.getElementById('lockErr').textContent='Kode salah. Cek email pembelian kamu.';setTimeout(()=>inp.classList.remove('err'),400);}
 }
 document.addEventListener('keydown',e=>{if(e.key==='Enter')checkCode();});
-
 const M=[
-  {id:'m1',tag:'Modul 1 — Finansial',title:'Berapa bulan keluarga kamu aman?',
-   story:'"Bukan bosnya. Bukan kantornya. Pertanyaan ini yang biasanya bikin orang bertahan jauh lebih lama dari yang seharusnya."',
-   tip:'<strong>Isi angka sesuai kondisi aslinya.</strong> Ketakutan yang dihitung jauh lebih kecil dari yang dipendam.',type:'fin',skippable:false},
-
-  {id:'m2',tag:'Modul 2 — Toxic Environment',title:'Sehat atau sudah terlalu lama di tempat yang salah?',
-   story:'"Kamu tidak butuh gue jelasin apa itu lingkungan toxic. Kamu udah ngerasainnya sendiri — setiap hari."',
-   tip:'<strong>1 = hampir selalu terjadi &nbsp;·&nbsp; 5 = jarang / tidak pernah</strong>',type:'scale',skippable:false,
-   qs:[
-     {q:'Setiap keputusan terasa subjektif — siapa yang disukai, bukan siapa yang perform.',h:'1=Hampir selalu · 5=Jarang'},
-     {q:'Kamu takut berbeda pendapat atau speak up karena ada konsekuensinya.',h:'1=Selalu takut · 5=Bebas ngomong'},
-     {q:'Pernah dipermalukan atau dikecilkan di depan orang lain.',h:'1=Sering · 5=Tidak pernah'},
-     {q:'Tekanan kerja langsung terasa ke fisik — maag, susah tidur, tegang.',h:'1=Setiap hari · 5=Tidak terasa'},
-     {q:'Penuh gosip, drama, dan persaingan yang tidak sehat.',h:'1=Setiap hari · 5=Jarang'},
-     {q:'Kerja keras tidak pernah diakui secara fair.',h:'1=Sangat jelas · 5=Fair'},
-     {q:'Kondisi kantor sudah berdampak ke kehidupan di rumah.',h:'1=Sangat terasa · 5=Tidak'},
-     {q:'Sudah cukup lama di sini dan tahu — situasi ini tidak akan berubah.',h:'1=Sudah bertahun-tahun · 5=Masih ada harapan'},
-   ]},
-
-  {id:'m2b',tag:'Modul 2B — Manage Out & Layoff',title:'Manage Out & Layoff — kamu sedang di mana?',
-   story:'"Gue pernah ada di dua sisi — yang membuat keputusan dan yang terkena dampaknya. Modul ini bantu kamu baca sinyalnya sebelum terlambat."',
-   tip:'<strong>1 = sudah terjadi / sangat terasa &nbsp;·&nbsp; 5 = tidak pernah.</strong> Kalau pertanyaan tidak relevan, klik "Tidak Relevan".',
-   type:'scale',skippable:true,skipLabel:'Tidak sedang di-manage out atau ada tanda layoff — skip modul ini',
-   qs:[
-     {q:'Namamu jarang disebut di meeting penting — padahal dulu selalu ada.',h:'1=Hampir setiap meeting · 5=Tidak pernah'},
-     {q:'Tidak diundang ke rapat yang dulu selalu kamu hadiri.',h:'1=Sudah beberapa kali · 5=Tidak pernah'},
-     {q:'Project besar tiba-tiba dipindah ke orang lain tanpa diskusi.',h:'1=Sudah terjadi · 5=Tidak pernah'},
-     {q:'Atasan mulai CC orang lain di email yang biasanya langsung ke kamu.',h:'1=Hampir semua email · 5=Tidak pernah'},
-     {q:'Menerima PIP yang terasa dipaksakan — target tidak realistis.',h:'1=Lagi dijalani · 5=Tidak pernah'},
-     {q:'Ada orang baru dengan jobdesk yang mirip banget sama kamu.',h:'1=Sudah ada · 5=Tidak ada'},
-     {q:'Diminta training orang lain untuk hal yang selama ini hanya kamu yang pegang.',h:'1=Sudah diminta · 5=Tidak pernah'},
-     {q:'HR tiba-tiba intensif ngajak meeting — terasa seperti assessment, bukan check-in.',h:'1=Sudah terjadi · 5=Tidak pernah'},
-     {q:'Budget tim atau project kamu dipotong tanpa penjelasan yang jelas.',h:'1=Sudah terjadi · 5=Tidak ada'},
-     {q:'Ada konsultan eksternal masuk dan mulai interview atau mapping struktur tim.',h:'1=Sudah terjadi · 5=Tidak ada'},
-     {q:'Planning tahun depan tidak melibatkan nama atau kontribusi kamu.',h:'1=Jelas tidak ada · 5=Masih dilibatkan'},
-     {q:'Hiring freeze — posisi kosong tidak diisi, kamu yang nanggung kerjaan tambahan.',h:'1=Sudah lama · 5=Tidak ada'},
-   ]},
-
-  {id:'m3',tag:'Modul 3 — Kesehatan',title:'Tubuh kamu sudah teriak. Kamu masih pura-pura tidak dengar?',
-   story:'"Maag kambuh lagi. Migrain lagi. Sudah berapa lama kamu bilang ini biasa?"',
-   tip:'<strong>Gejala fisik bukan kelemahan kamu.</strong> Itu cara tubuh bilang: sudah tidak kuat menanggung ini sendirian.',type:'scale',skippable:false,
-   qs:[
-     {q:'Sering mengalami gejala fisik karena kerja — maag, migrain, susah tidur.',h:'1=Hampir setiap hari · 5=Jarang'},
-     {q:'Lelah bahkan setelah tidur cukup.',h:'1=Setiap pagi · 5=Jarang'},
-     {q:'Kondisi fisik memburuk sejak tekanan kerja naik.',h:'1=Sangat terasa · 5=Tidak ada hubungan'},
-     {q:'Pernah izin sakit bukan karena sakit — tapi karena butuh jeda.',h:'1=Sering · 5=Tidak pernah'},
-     {q:'Waktu libur pun tetap tegang dan tidak bisa rileks.',h:'1=Selalu tegang · 5=Bisa rileks'},
-   ]},
-
-  {id:'m3b',tag:'Modul 3B — Stress & Kebiasaan',title:'Stress kamu keluar lewat apa?',
-   story:'"Rokok makin banyak. Belanja makin sering. Ini cara tubuh kamu survive dari sesuatu yang terlalu berat."',
-   tip:'<strong>Kebiasaan adalah bahasa tubuh yang paling jujur.</strong>',type:'scale',skippable:false,
-   qs:[
-     {q:'Konsumsi rokok, alkohol, atau kafein meningkat signifikan.',h:'1=Naik drastis · 5=Tidak berubah'},
-     {q:'Makan berlebihan atau kehilangan nafsu makan saat stress.',h:'1=Selalu terjadi · 5=Tidak terpengaruh'},
-     {q:'Belanja impulsif atau scroll HP berlebihan untuk kabur.',h:'1=Setiap hari · 5=Jarang'},
-     {q:'Sulit berhenti memikirkan kerjaan bahkan saat istirahat.',h:'1=Tidak bisa berhenti · 5=Bisa lepas'},
-     {q:'Menghindari orang-orang terdekat karena terlalu lelah.',h:'1=Sering menghindar · 5=Tidak'},
-   ]},
-
-  {id:'m4',tag:'Modul 4 — Keluarga & Support System',title:'Kamu siap resign. Tapi yang di rumah — beneran siap?',
-   story:'"Ini bukan tentang minta izin. Ini tentang tidak berjalan sendirian dalam keputusan yang akan berdampak ke seluruh keluarga."',
-   tip:'<strong>Pasangan atau support system yang tahu kondisi aslinya</strong> jauh lebih siap mendukung daripada yang kaget di tengah jalan.',
-   type:'scale',skippable:true,skipLabel:'Saya single / tidak ada tanggungan keluarga — skip modul ini',
-   qs:[
-     {q:'Pasanganmu tahu kondisi kerjamu yang sebenarnya — bukan versi yang sudah difilter.',h:'1=Sama sekali tidak tahu · 5=Tahu sepenuhnya'},
-     {q:'Sudah pernah diskusi serius tentang kemungkinan resign.',h:'1=Belum pernah · 5=Sudah diskusi mendalam'},
-     {q:'Pasanganmu siap mental untuk fase transisi — income mungkin berkurang.',h:'1=Belum siap · 5=Sudah siap'},
-     {q:'Keputusan resign tidak akan menimbulkan konflik besar di rumah.',h:'1=Pasti konflik · 5=Tidak masalah'},
-     {q:'Punya support system — keluarga atau teman yang bisa jadi sandaran.',h:'1=Tidak ada · 5=Ada dan solid'},
-   ]},
-
-  {id:'m5',tag:'Modul 5 — Mental',title:'Takut bukan tanda untuk berhenti. Takut tanda untuk nyiapin diri.',
-   story:'"Semua orang yang pernah ambil keputusan besar pernah ngerasa takut yang sama seperti kamu."',
-   tip:'Jawab jujur. <strong>Tidak ada jawaban yang salah di sini.</strong>',type:'scale',skippable:false,
-   qs:[
-     {q:'Kehilangan motivasi dan passion yang dulu ada untuk pekerjaan ini.',h:'1=Hilang total · 5=Masih ada'},
-     {q:'Sering anxiety atau overthinking soal kerjaan di luar jam kerja.',h:'1=Hampir setiap hari · 5=Jarang'},
-     {q:'Merasa stuck dan tidak ada jalan keluar yang terlihat.',h:'1=Sangat stuck · 5=Masih punya opsi'},
-     {q:'Takut gagal atau dihakimi kalau memutuskan untuk resign.',h:'1=Sangat takut · 5=Tidak terlalu'},
-     {q:'Sudah bisa membayangkan hidup yang berbeda — dan mau itu terjadi.',h:'1=Tidak bisa bayangkan · 5=Sudah sangat jelas'},
-   ]},
-
-  {id:'m6',tag:'Modul 6 — Identitas',title:'Jabatan hilang. Status hilang. Kamu ini siapa?',
-   story:'"Ini pertanyaan yang paling jarang dibahas — tapi paling sering jadi alasan orang tidak jadi resign."',
-   tip:'<strong>Identitas kamu lebih besar dari jabatan kamu.</strong> Tapi ini perlu dijawab jujur dulu.',type:'scale',skippable:false,
-   qs:[
-     {q:'Punya identitas yang jelas di luar pekerjaan — hobi, passion, peran dalam keluarga.',h:'1=Tidak ada · 5=Sangat jelas'},
-     {q:'Bisa menjawab "kamu ini siapa?" tanpa menyebut jabatan.',h:'1=Tidak bisa · 5=Bisa dengan yakin'},
-     {q:'Punya tujuan hidup yang lebih besar dari karir sekarang.',h:'1=Tidak punya · 5=Sangat jelas'},
-     {q:'Sudah pernah memikirkan apa yang ingin dilakukan setelah resign.',h:'1=Belum sama sekali · 5=Sudah ada rencana'},
-     {q:'Percaya bahwa nilaimu sebagai manusia tidak tergantung jabatan.',h:'1=Belum percaya · 5=Sepenuhnya percaya'},
-   ]},
-
-  {id:'m7',tag:'Modul 7 — Rencana',title:'Tanpa rencana, resign itu bukan kebebasan.',
-   story:'"Resign tanpa rencana itu mahal — bukan karena hasilnya pasti buruk, tapi karena tekanan finansial bisa bikin kamu ambil keputusan dari kepanikan."',
-   tip:'<strong>Rencana yang konkret — seburuk apapun — lebih baik dari tidak ada rencana sama sekali.</strong>',type:'scale',skippable:false,
-   qs:[
-     {q:'Punya gambaran konkret apa yang dilakukan dalam 90 hari pertama setelah resign.',h:'1=Tidak ada · 5=Sudah sangat jelas'},
-     {q:'Sudah mulai membangun income alternatif sebelum resign.',h:'1=Belum sama sekali · 5=Sudah berjalan'},
-     {q:'Tahu cara resign yang benar — prosedur, hak, dan timing yang tepat.',h:'1=Tidak tahu · 5=Tahu sepenuhnya'},
-     {q:'Punya target waktu yang realistis untuk resign — bukan "suatu hari nanti."',h:'1=Belum ada · 5=Sudah konkret'},
-     {q:'Siap untuk ketidakpastian 3–6 bulan pertama — mental dan finansial.',h:'1=Belum siap · 5=Siap'},
-   ]},
+  {id:'m1',tag:'Modul 1 — Finansial',title:'Berapa bulan keluarga kamu aman?',story:'"Bukan bosnya. Bukan kantornya. Pertanyaan ini yang biasanya bikin orang bertahan jauh lebih lama dari yang seharusnya."',tip:'<strong>Isi angka sesuai kondisi aslinya.</strong> Ketakutan yang dihitung jauh lebih kecil dari yang dipendam.',type:'fin',skippable:false},
+  {id:'m2',tag:'Modul 2 — Toxic Environment',title:'Sehat atau sudah terlalu lama di tempat yang salah?',story:'"Kamu tidak butuh gue jelasin apa itu lingkungan toxic. Kamu udah ngerasainnya sendiri — setiap hari."',tip:'<strong>1 = hampir selalu terjadi &nbsp;·&nbsp; 5 = jarang / tidak pernah</strong>',type:'scale',skippable:false,qs:[
+    {q:'Setiap keputusan terasa subjektif — siapa yang disukai, bukan siapa yang perform.',h:'1=Hampir selalu · 5=Jarang'},
+    {q:'Kamu takut berbeda pendapat atau speak up karena ada konsekuensinya.',h:'1=Selalu takut · 5=Bebas ngomong'},
+    {q:'Pernah dipermalukan atau dikecilkan di depan orang lain.',h:'1=Sering · 5=Tidak pernah'},
+    {q:'Tekanan kerja langsung terasa ke fisik — maag, susah tidur, tegang.',h:'1=Setiap hari · 5=Tidak terasa'},
+    {q:'Penuh gosip, drama, dan persaingan yang tidak sehat.',h:'1=Setiap hari · 5=Jarang'},
+    {q:'Kerja keras tidak pernah diakui secara fair.',h:'1=Sangat jelas · 5=Fair'},
+    {q:'Kondisi kantor sudah berdampak ke kehidupan di rumah.',h:'1=Sangat terasa · 5=Tidak'},
+    {q:'Sudah cukup lama di sini dan tahu — situasi ini tidak akan berubah.',h:'1=Sudah bertahun-tahun · 5=Masih ada harapan'},
+  ]},
+  {id:'m2b',tag:'Modul 2B — Manage Out & Layoff',title:'Manage Out & Layoff — kamu sedang di mana?',story:'"Gue pernah ada di dua sisi — yang membuat keputusan dan yang terkena dampaknya. Modul ini bantu kamu baca sinyalnya sebelum terlambat."',tip:'<strong>1 = sudah terjadi / sangat terasa &nbsp;·&nbsp; 5 = tidak pernah.</strong> Kalau pertanyaan tidak relevan, klik "Tidak Relevan".',type:'scale',skippable:true,skipLabel:'Tidak sedang di-manage out atau ada tanda layoff — skip modul ini',qs:[
+    {q:'Namamu jarang disebut di meeting penting — padahal dulu selalu ada.',h:'1=Hampir setiap meeting · 5=Tidak pernah'},
+    {q:'Tidak diundang ke rapat yang dulu selalu kamu hadiri.',h:'1=Sudah beberapa kali · 5=Tidak pernah'},
+    {q:'Project besar tiba-tiba dipindah ke orang lain tanpa diskusi.',h:'1=Sudah terjadi · 5=Tidak pernah'},
+    {q:'Atasan mulai CC orang lain di email yang biasanya langsung ke kamu.',h:'1=Hampir semua email · 5=Tidak pernah'},
+    {q:'Menerima PIP yang terasa dipaksakan — target tidak realistis.',h:'1=Lagi dijalani · 5=Tidak pernah'},
+    {q:'Ada orang baru dengan jobdesk yang mirip banget sama kamu.',h:'1=Sudah ada · 5=Tidak ada'},
+    {q:'Diminta training orang lain untuk hal yang selama ini hanya kamu yang pegang.',h:'1=Sudah diminta · 5=Tidak pernah'},
+    {q:'HR tiba-tiba intensif ngajak meeting — terasa seperti assessment, bukan check-in.',h:'1=Sudah terjadi · 5=Tidak pernah'},
+    {q:'Budget tim atau project kamu dipotong tanpa penjelasan yang jelas.',h:'1=Sudah terjadi · 5=Tidak ada'},
+    {q:'Ada konsultan eksternal masuk dan mulai interview atau mapping struktur tim.',h:'1=Sudah terjadi · 5=Tidak ada'},
+    {q:'Planning tahun depan tidak melibatkan nama atau kontribusi kamu.',h:'1=Jelas tidak ada · 5=Masih dilibatkan'},
+    {q:'Hiring freeze — posisi kosong tidak diisi, kamu yang nanggung kerjaan tambahan.',h:'1=Sudah lama · 5=Tidak ada'},
+  ]},
+  {id:'m3',tag:'Modul 3 — Kesehatan',title:'Tubuh kamu sudah teriak. Kamu masih pura-pura tidak dengar?',story:'"Maag kambuh lagi. Migrain lagi. Sudah berapa lama kamu bilang ini biasa?"',tip:'<strong>Gejala fisik bukan kelemahan kamu.</strong> Itu cara tubuh bilang: sudah tidak kuat menanggung ini sendirian.',type:'scale',skippable:false,qs:[
+    {q:'Sering mengalami gejala fisik karena kerja — maag, migrain, susah tidur.',h:'1=Hampir setiap hari · 5=Jarang'},
+    {q:'Lelah bahkan setelah tidur cukup.',h:'1=Setiap pagi · 5=Jarang'},
+    {q:'Kondisi fisik memburuk sejak tekanan kerja naik.',h:'1=Sangat terasa · 5=Tidak ada hubungan'},
+    {q:'Pernah izin sakit bukan karena sakit — tapi karena butuh jeda.',h:'1=Sering · 5=Tidak pernah'},
+    {q:'Waktu libur pun tetap tegang dan tidak bisa rileks.',h:'1=Selalu tegang · 5=Bisa rileks'},
+  ]},
+  {id:'m3b',tag:'Modul 3B — Stress & Kebiasaan',title:'Stress kamu keluar lewat apa?',story:'"Rokok makin banyak. Belanja makin sering. Ini cara tubuh kamu survive dari sesuatu yang terlalu berat."',tip:'<strong>Kebiasaan adalah bahasa tubuh yang paling jujur.</strong>',type:'scale',skippable:false,qs:[
+    {q:'Konsumsi rokok, alkohol, atau kafein meningkat signifikan.',h:'1=Naik drastis · 5=Tidak berubah'},
+    {q:'Makan berlebihan atau kehilangan nafsu makan saat stress.',h:'1=Selalu terjadi · 5=Tidak terpengaruh'},
+    {q:'Belanja impulsif atau scroll HP berlebihan untuk kabur.',h:'1=Setiap hari · 5=Jarang'},
+    {q:'Sulit berhenti memikirkan kerjaan bahkan saat istirahat.',h:'1=Tidak bisa berhenti · 5=Bisa lepas'},
+    {q:'Menghindari orang-orang terdekat karena terlalu lelah.',h:'1=Sering menghindar · 5=Tidak'},
+  ]},
+  {id:'m4',tag:'Modul 4 — Keluarga & Support System',title:'Kamu siap resign. Tapi yang di rumah — beneran siap?',story:'"Ini bukan tentang minta izin. Ini tentang tidak berjalan sendirian dalam keputusan yang akan berdampak ke seluruh keluarga."',tip:'<strong>Pasangan atau support system yang tahu kondisi aslinya</strong> jauh lebih siap mendukung daripada yang kaget di tengah jalan.',type:'scale',skippable:true,skipLabel:'Saya single / tidak ada tanggungan keluarga — skip modul ini',qs:[
+    {q:'Pasanganmu tahu kondisi kerjamu yang sebenarnya — bukan versi yang sudah difilter.',h:'1=Sama sekali tidak tahu · 5=Tahu sepenuhnya'},
+    {q:'Sudah pernah diskusi serius tentang kemungkinan resign.',h:'1=Belum pernah · 5=Sudah diskusi mendalam'},
+    {q:'Pasanganmu siap mental untuk fase transisi — income mungkin berkurang.',h:'1=Belum siap · 5=Sudah siap'},
+    {q:'Keputusan resign tidak akan menimbulkan konflik besar di rumah.',h:'1=Pasti konflik · 5=Tidak masalah'},
+    {q:'Punya support system — keluarga atau teman yang bisa jadi sandaran.',h:'1=Tidak ada · 5=Ada dan solid'},
+  ]},
+  {id:'m5',tag:'Modul 5 — Mental',title:'Takut bukan tanda untuk berhenti. Takut tanda untuk nyiapin diri.',story:'"Semua orang yang pernah ambil keputusan besar pernah ngerasa takut yang sama seperti kamu."',tip:'Jawab jujur. <strong>Tidak ada jawaban yang salah di sini.</strong>',type:'scale',skippable:false,qs:[
+    {q:'Kehilangan motivasi dan passion yang dulu ada untuk pekerjaan ini.',h:'1=Hilang total · 5=Masih ada'},
+    {q:'Sering anxiety atau overthinking soal kerjaan di luar jam kerja.',h:'1=Hampir setiap hari · 5=Jarang'},
+    {q:'Merasa stuck dan tidak ada jalan keluar yang terlihat.',h:'1=Sangat stuck · 5=Masih punya opsi'},
+    {q:'Takut gagal atau dihakimi kalau memutuskan untuk resign.',h:'1=Sangat takut · 5=Tidak terlalu'},
+    {q:'Sudah bisa membayangkan hidup yang berbeda — dan mau itu terjadi.',h:'1=Tidak bisa bayangkan · 5=Sudah sangat jelas'},
+  ]},
+  {id:'m6',tag:'Modul 6 — Identitas',title:'Jabatan hilang. Status hilang. Kamu ini siapa?',story:'"Ini pertanyaan yang paling jarang dibahas — tapi paling sering jadi alasan orang tidak jadi resign."',tip:'<strong>Identitas kamu lebih besar dari jabatan kamu.</strong> Tapi ini perlu dijawab jujur dulu.',type:'scale',skippable:false,qs:[
+    {q:'Punya identitas yang jelas di luar pekerjaan — hobi, passion, peran dalam keluarga.',h:'1=Tidak ada · 5=Sangat jelas'},
+    {q:'Bisa menjawab "kamu ini siapa?" tanpa menyebut jabatan.',h:'1=Tidak bisa · 5=Bisa dengan yakin'},
+    {q:'Punya tujuan hidup yang lebih besar dari karir sekarang.',h:'1=Tidak punya · 5=Sangat jelas'},
+    {q:'Sudah pernah memikirkan apa yang ingin dilakukan setelah resign.',h:'1=Belum sama sekali · 5=Sudah ada rencana'},
+    {q:'Percaya bahwa nilaimu sebagai manusia tidak tergantung jabatan.',h:'1=Belum percaya · 5=Sepenuhnya percaya'},
+  ]},
+  {id:'m7',tag:'Modul 7 — Rencana',title:'Tanpa rencana, resign itu bukan kebebasan.',story:'"Resign tanpa rencana itu mahal — bukan karena hasilnya pasti buruk, tapi karena tekanan finansial bisa bikin kamu ambil keputusan dari kepanikan."',tip:'<strong>Rencana yang konkret — seburuk apapun — lebih baik dari tidak ada rencana sama sekali.</strong>',type:'scale',skippable:false,qs:[
+    {q:'Punya gambaran konkret apa yang dilakukan dalam 90 hari pertama setelah resign.',h:'1=Tidak ada · 5=Sudah sangat jelas'},
+    {q:'Sudah mulai membangun income alternatif sebelum resign.',h:'1=Belum sama sekali · 5=Sudah berjalan'},
+    {q:'Tahu cara resign yang benar — prosedur, hak, dan timing yang tepat.',h:'1=Tidak tahu · 5=Tahu sepenuhnya'},
+    {q:'Punya target waktu yang realistis untuk resign — bukan "suatu hari nanti."',h:'1=Belum ada · 5=Sudah konkret'},
+    {q:'Siap untuk ketidakpastian 3–6 bulan pertama — mental dan finansial.',h:'1=Belum siap · 5=Siap'},
+  ]},
 ];
-
 let finD={tabungan:0,deposito:0,darurat:0,emas:0,pesangon:0,pokok:0,kpr:0,kendaraan:0,pendidikan:0,bpjs:0,transport:0,komunikasi:0,kesehatan:0,anak:0,gaya:0,buffer:0};
 let scores={};
 let cur=-1;
-
 function build(){
-  const dots=document.getElementById('dots');
-  dots.innerHTML=M.map((_,i)=>`<div class="pdot" id="d${i}"></div>`).join('')+`<div class="pdot" id="d${M.length}"></div>`;
-  const mods=document.getElementById('mods');
-  mods.innerHTML=M.map((m,i)=>buildMod(m,i)).join('');
+  document.getElementById('dots').innerHTML=M.map((_,i)=>`<div class="pdot" id="d${i}"></div>`).join('')+`<div class="pdot" id="d${M.length}"></div>`;
+  document.getElementById('mods').innerHTML=M.map((m,i)=>buildMod(m,i)).join('');
 }
-
 function buildMod(m,i){
   const body=m.type==='fin'?buildFin():buildQs(m,i);
-  const skipBanner=m.skippable?`
-    <div class="skip-banner" id="skipBanner-${i}">
-      <p>${m.skipLabel}</p>
-      <button class="skip-btn" id="skipBtn-${i}" onclick="toggleSkipModule(${i})"">⏭ Skip Modul Ini</button>
-    </div>`:''
+  const skipBanner=m.skippable?`<div class="skip-banner" id="skipBanner-${i}"><p>${m.skipLabel}</p><button class="skip-btn" id="skipBtn-${i}" onclick="toggleSkipModule(${i})">&#9197; Skip Modul Ini</button></div>`:'';
   const back=i>0?`<button class="btn-back" onclick="show(${i-1})">←</button>`:'';
-  const next=i<M.length-1
-    ?`<button class="btn-next" onclick="show(${i+1})">Lanjut →</button>`
-    :`<button class="btn-next" onclick="showDash()">Lihat Hasil →</button>`;
-  return `<div class="mod" id="m${i}">
-    <div class="mod-tag">${m.tag}</div>
-    <h2 class="mod-title">${m.title}</h2>
-    <div class="mod-line"></div>
-    <div class="mod-story">${m.story}</div>
-    <div class="mod-tip">${m.tip}</div>
-    ${skipBanner}
-    <div id="modContent-${i}">${body}</div>
-    <div class="nav-btns">${back}${next}</div>
-  </div>`;
+  const next=i<M.length-1?`<button class="btn-next" onclick="show(${i+1})">Lanjut →</button>`:`<button class="btn-next" onclick="showDash()">Lihat Hasil →</button>`;
+  return `<div class="mod" id="m${i}"><div class="mod-tag">${m.tag}</div><h2 class="mod-title">${m.title}</h2><div class="mod-line"></div><div class="mod-story">${m.story}</div><div class="mod-tip">${m.tip}</div>${skipBanner}<div id="modContent-${i}">${body}</div><div class="nav-btns">${back}${next}</div></div>`;
 }
-
 function toggleSkipModule(i){
-  const m=M[i];
-  const btn=document.getElementById(`skipBtn-${i}`);
-  const content=document.getElementById(`modContent-${i}`);
-  if(skippedModules[m.id]){
-    // Unskip
-    skippedModules[m.id]=false;
-    btn.textContent='⏭ Skip Modul Ini';
-    btn.classList.remove('skipped');
-    content.style.display='block';
-    delete scores[m.id];
-  } else {
-    // Skip
-    skippedModules[m.id]=true;
-    btn.textContent='✓ Modul Dilewati — Tidak Dihitung';
-    btn.classList.add('skipped');
-    content.style.display='none';
-    scores[m.id]='SKIP';
-  }
+  const m=M[i],btn=document.getElementById(`skipBtn-${i}`),content=document.getElementById(`modContent-${i}`);
+  if(skippedModules[m.id]){skippedModules[m.id]=false;btn.textContent='\u23ed Skip Modul Ini';btn.classList.remove('skipped');content.style.display='block';delete scores[m.id];}
+  else{skippedModules[m.id]=true;btn.textContent='\u2713 Modul Dilewati \u2014 Tidak Dihitung';btn.classList.add('skipped');content.style.display='none';scores[m.id]='SKIP';}
 }
-
+function formatFin(el,k){
+  const raw=el.value.replace(/\./g,'').replace(/[^0-9]/g,'');
+  const num=parseInt(raw)||0;
+  el.value=num>0?num.toLocaleString('id-ID'):'';
+  upFin(k,num);
+}
 function buildFin(){
-  const r=(l,k)=>`
-    <div class="fin-row">
-      <div class="fin-label">${l}</div>
-      <input type="number" inputmode="numeric" class="fin-input" placeholder="0" autocomplete="off" name="fin-${k}" oninput="upFin('${k}',this.value.replace(/[^0-9]/g,''))">
-    </div>`;
-  return `
-    <div class="fin-section-title">A. Aset yang bisa diandalkan sekarang</div>
-    <p class="fin-note">Isi angka dalam Rupiah. Kosongkan kalau tidak ada.</p>
-    ${r('Tabungan aktif (bisa ditarik kapan saja)','tabungan')}
-    ${r('Deposito / reksa dana','deposito')}
-    ${r('Dana darurat','darurat')}
-    ${r('Emas / aset cair lainnya','emas')}
-    ${r('Estimasi pesangon (kalau ada)','pesangon')}
-    <div class="fin-section-title" style="margin-top:1.2rem">B. Pengeluaran bulanan SETELAH resign</div>
-    <p class="fin-note">Isi semua yang berlaku. Isi 0 kalau tidak ada.</p>
-    ${r('Kebutuhan pokok & makan','pokok')}
-    ${r('KPR / sewa rumah','kpr')}
-    ${r('Cicilan kendaraan','kendaraan')}
-    ${r('Pendidikan anak','pendidikan')}
-    ${r('BPJS + asuransi','bpjs')}
-    ${r('Transport','transport')}
-    ${r('Komunikasi (HP, internet)','komunikasi')}
-    ${r('Kesehatan rutin','kesehatan')}
-    ${r('Kebutuhan anak lainnya','anak')}
-    ${r('Gaya hidup minimal','gaya')}
-    ${r('Buffer darurat','buffer')}
-    <div class="fin-result" id="fRes">
-      <div class="fr-row"><span class="fr-label">Total aset cair</span><span class="fr-val" id="fA">Rp 0</span></div>
-      <div class="fr-row"><span class="fr-label">Total pengeluaran / bulan</span><span class="fr-val" id="fB">Rp 0</span></div>
-      <div class="fr-row" style="border-top:1px solid var(--gold);margin-top:.5rem">
-        <span class="fr-label" style="color:var(--text);font-weight:700">⏰ Keluarga aman selama</span>
-        <span class="fr-val runway-big" id="fR">—</span>
-      </div>
-    </div>`;
+  const r=(l,k)=>`<div class="fin-row"><div class="fin-label">${l}</div><input type="text" inputmode="numeric" class="fin-input" placeholder="0" autocomplete="off" name="fin-${k}" oninput="formatFin(this,'${k}')"></div>`;
+  return `<div class="fin-section-title">A. Aset yang bisa diandalkan sekarang</div><p class="fin-note">Isi angka dalam Rupiah. Kosongkan kalau tidak ada.</p>${r('Tabungan aktif (bisa ditarik kapan saja)','tabungan')}${r('Deposito / reksa dana','deposito')}${r('Dana darurat','darurat')}${r('Emas / aset cair lainnya','emas')}${r('Estimasi pesangon (kalau ada)','pesangon')}<div class="fin-section-title" style="margin-top:1.2rem">B. Pengeluaran bulanan SETELAH resign</div><p class="fin-note">Isi semua yang berlaku. Isi 0 kalau tidak ada.</p>${r('Kebutuhan pokok & makan','pokok')}${r('KPR / sewa rumah','kpr')}${r('Cicilan kendaraan','kendaraan')}${r('Pendidikan anak','pendidikan')}${r('BPJS + asuransi','bpjs')}${r('Transport','transport')}${r('Komunikasi (HP, internet)','komunikasi')}${r('Kesehatan rutin','kesehatan')}${r('Kebutuhan anak lainnya','anak')}${r('Gaya hidup minimal','gaya')}${r('Buffer darurat','buffer')}<div class="fin-result" id="fRes"><div class="fr-row"><span class="fr-label">Total aset cair</span><span class="fr-val" id="fA">Rp 0</span></div><div class="fr-row"><span class="fr-label">Total pengeluaran / bulan</span><span class="fr-val" id="fB">Rp 0</span></div><div class="fr-row" style="border-top:1px solid var(--gold);margin-top:.5rem"><span class="fr-label" style="color:var(--text);font-weight:700">&#9200; Keluarga aman selama</span><span class="fr-val runway-big" id="fR">—</span></div></div>`;
 }
-
 function buildQs(m,i){
-  // Only Manage Out (m2b) gets per-question irrelevant button
-  const hasIrrelevant = m.id==='m2b';
-  return m.qs.map((q,qi)=>`
-    <div class="q" id="q-${m.id}-${qi}">
-      <div class="q-text">${q.q}</div>
-      <div class="q-hint">${q.h}</div>
-      <div class="q-scale">
-        ${[1,2,3,4,5].map(n=>`<button class="sq" id="${m.id}-${qi}-${n}" onclick="pick('${m.id}',${qi},${n})">${n}</button>`).join('')}
-        ${hasIrrelevant?`<button class="btn-irrelevant" id="irr-${m.id}-${qi}" onclick="toggleIrrelevant('${m.id}',${qi})">Tidak<br>Relevan</button>`:''}
-      </div>
-      <div class="q-labels"><span>Hampir selalu</span><span>Tidak pernah</span></div>
-    </div>
-    ${qi<m.qs.length-1?'<div class="q-sep"></div>':''}
-  `).join('');
+  const hasIrrelevant=m.id==='m2b';
+  return m.qs.map((q,qi)=>`<div class="q" id="q-${m.id}-${qi}"><div class="q-text">${q.q}</div><div class="q-hint">${q.h}</div><div class="q-scale">${[1,2,3,4,5].map(n=>`<button class="sq" id="${m.id}-${qi}-${n}" onclick="pick('${m.id}',${qi},${n})">${n}</button>`).join('')}${hasIrrelevant?`<button class="btn-irrelevant" id="irr-${m.id}-${qi}" onclick="toggleIrrelevant('${m.id}',${qi})">Tidak<br>Relevan</button>`:''}</div><div class="q-labels"><span>Hampir selalu</span><span>Tidak pernah</span></div></div>${qi<m.qs.length-1?'<div class="q-sep"></div>':''}`).join('');
 }
-
 function toggleIrrelevant(mid,qi){
-  const key=`${mid}-${qi}`;
-  const btn=document.getElementById(`irr-${mid}-${qi}`);
-  const qEl=document.getElementById(`q-${mid}-${qi}`);
-  if(irrelevantQs[key]){
-    // Un-mark
-    irrelevantQs[key]=false;
-    btn.classList.remove('active');
-    qEl.style.opacity='1';
-    // Re-enable score buttons
-    [1,2,3,4,5].forEach(n=>{
-      const el=document.getElementById(`${mid}-${qi}-${n}`);
-      if(el){el.disabled=false;el.style.opacity='1';}
-    });
-  } else {
-    // Mark irrelevant
-    irrelevantQs[key]=true;
-    btn.classList.add('active');
-    qEl.style.opacity='.5';
-    // Clear any selection and disable buttons
-    [1,2,3,4,5].forEach(n=>{
-      const el=document.getElementById(`${mid}-${qi}-${n}`);
-      if(el){el.classList.remove('active');el.disabled=true;el.style.opacity='.4';}
-    });
-    calcScore(mid);
-  }
+  const key=`${mid}-${qi}`,btn=document.getElementById(`irr-${mid}-${qi}`),qEl=document.getElementById(`q-${mid}-${qi}`);
+  if(irrelevantQs[key]){irrelevantQs[key]=false;btn.classList.remove('active');qEl.style.opacity='1';[1,2,3,4,5].forEach(n=>{const el=document.getElementById(`${mid}-${qi}-${n}`);if(el){el.disabled=false;el.style.opacity='1';}});}
+  else{irrelevantQs[key]=true;btn.classList.add('active');qEl.style.opacity='.5';[1,2,3,4,5].forEach(n=>{const el=document.getElementById(`${mid}-${qi}-${n}`);if(el){el.classList.remove('active');el.disabled=true;el.style.opacity='.4';}});calcScore(mid);}
 }
-
-function startApp(){
-  document.getElementById('cover').style.display='none';
-  show(0);
-}
-
+function startApp(){document.getElementById('cover').style.display='none';show(0);}
 function countAnswered(modIdx){
   const m=M[modIdx];
-  if(!m) return {answered:0,total:0};
-  // If module is skipped entirely, it's "answered" (no validation needed)
-  if(skippedModules[m.id]) return {answered:1,total:1};
-  if(m.type==='fin'){
-    const aset=finD.tabungan+finD.deposito+finD.darurat+finD.emas+finD.pesangon;
-    const burn=finD.pokok+finD.kpr+finD.kendaraan+finD.pendidikan+finD.bpjs+finD.transport+finD.komunikasi+finD.kesehatan+finD.anak+finD.gaya+finD.buffer;
-    return {answered:(aset>0&&burn>0)?1:0,total:1};
-  }
-  if(!m.qs) return {answered:0,total:0};
+  if(!m)return{answered:0,total:0};
+  if(skippedModules[m.id])return{answered:1,total:1};
+  if(m.type==='fin'){const aset=finD.tabungan+finD.deposito+finD.darurat+finD.emas+finD.pesangon,burn=finD.pokok+finD.kpr+finD.kendaraan+finD.pendidikan+finD.bpjs+finD.transport+finD.komunikasi+finD.kesehatan+finD.anak+finD.gaya+finD.buffer;return{answered:(aset>0&&burn>0)?1:0,total:1};}
+  if(!m.qs)return{answered:0,total:0};
   let answered=0,total=0;
-  m.qs.forEach((q,qi)=>{
-    const key=`${m.id}-${qi}`;
-    // Skip irrelevant questions from count
-    if(irrelevantQs[key]) return;
-    total++;
-    for(let n=1;n<=5;n++){
-      const el=document.getElementById(`${m.id}-${qi}-${n}`);
-      if(el&&el.classList.contains('active')){answered++;break;}
-    }
-  });
-  return {answered,total};
+  m.qs.forEach((q,qi)=>{const key=`${m.id}-${qi}`;if(irrelevantQs[key])return;total++;for(let n=1;n<=5;n++){const el=document.getElementById(`${m.id}-${qi}-${n}`);if(el&&el.classList.contains('active')){answered++;break;}}});
+  return{answered,total};
 }
-
 function show(i){
-  if(i>cur&&cur>=0){
-    const {answered,total}=countAnswered(cur);
-    if(answered<total){
-      showModErr(cur,total-answered);
-      return;
-    }
-  }
+  if(i>cur&&cur>=0){const{answered,total}=countAnswered(cur);if(answered<total){showModErr(cur,total-answered);return;}}
   document.querySelectorAll('.mod').forEach(m=>m.classList.remove('active'));
   document.getElementById('dash').classList.remove('active');
   document.getElementById('errScreen').style.display='none';
   document.getElementById(`m${i}`).classList.add('active');
-  cur=i;
-  updateDots(i);
-  window.scrollTo({top:0,behavior:'smooth'});
-  if(i===0) setTimeout(clearFinInputs,100);
+  cur=i;updateDots(i);window.scrollTo({top:0,behavior:'smooth'});
+  if(i===0)setTimeout(clearFinInputs,100);
 }
-
 function clearFinInputs(){
   document.querySelectorAll('.fin-input').forEach(el=>{el.value='';});
   Object.keys(finD).forEach(k=>finD[k]=0);
   ['fA','fB'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='Rp 0';});
-  const fR=document.getElementById('fR');
-  if(fR){fR.textContent='—';fR.className='fr-val runway-big';}
+  const fR=document.getElementById('fR');if(fR){fR.textContent='—';fR.className='fr-val runway-big';}
   delete scores['m1'];
 }
-
 function showModErr(modIdx,remaining){
   let errEl=document.getElementById('modErr');
-  if(!errEl){
-    errEl=document.createElement('div');
-    errEl.id='modErr';
-    errEl.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;padding:.85rem 1.5rem;border-radius:8px;font-size:.9rem;font-family:var(--font);font-weight:600;z-index:99;text-align:center;max-width:320px;width:90%';
-    document.body.appendChild(errEl);
-  }
-  errEl.textContent=`Masih ada ${remaining} pertanyaan yang belum dijawab.`;
-  errEl.style.display='block';
+  if(!errEl){errEl=document.createElement('div');errEl.id='modErr';errEl.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;padding:.85rem 1.5rem;border-radius:8px;font-size:.9rem;font-family:var(--font);font-weight:600;z-index:99;text-align:center;max-width:320px;width:90%';document.body.appendChild(errEl);}
+  errEl.textContent=`Masih ada ${remaining} pertanyaan yang belum dijawab.`;errEl.style.display='block';
   setTimeout(()=>{if(errEl)errEl.style.display='none';},2500);
 }
-
-function updateDots(i){
-  M.forEach((_,j)=>{
-    const d=document.getElementById(`d${j}`);
-    if(!d)return;
-    d.classList.remove('active','done');
-    if(j<i)d.classList.add('done');
-    else if(j===i)d.classList.add('active');
-  });
-}
-
+function updateDots(i){M.forEach((_,j)=>{const d=document.getElementById(`d${j}`);if(!d)return;d.classList.remove('active','done');if(j<i)d.classList.add('done');else if(j===i)d.classList.add('active');});}
 function pick(mid,qi,v){
-  // Don't allow pick if irrelevant
-  const key=`${mid}-${qi}`;
-  if(irrelevantQs[key]) return;
-  [1,2,3,4,5].forEach(n=>{
-    const el=document.getElementById(`${mid}-${qi}-${n}`);
-    if(el)el.classList.toggle('active',n===v);
-  });
+  const key=`${mid}-${qi}`;if(irrelevantQs[key])return;
+  [1,2,3,4,5].forEach(n=>{const el=document.getElementById(`${mid}-${qi}-${n}`);if(el)el.classList.toggle('active',n===v);});
   calcScore(mid);
 }
-
 function calcScore(mid){
-  const m=M.find(x=>x.id===mid);
-  if(!m||!m.qs) return;
+  const m=M.find(x=>x.id===mid);if(!m||!m.qs)return;
   let total=0,count=0;
-  m.qs.forEach((q,qi)=>{
-    const key=`${mid}-${qi}`;
-    // Skip irrelevant questions
-    if(irrelevantQs[key]) return;
-    for(let n=1;n<=5;n++){
-      const el=document.getElementById(`${mid}-${qi}-${n}`);
-      if(el&&el.classList.contains('active')){total+=n;count++;break;}
-    }
-  });
-  if(count>0) scores[mid]=Math.round((total/(count*5))*100);
-  else delete scores[mid];
+  m.qs.forEach((q,qi)=>{const key=`${mid}-${qi}`;if(irrelevantQs[key])return;for(let n=1;n<=5;n++){const el=document.getElementById(`${mid}-${qi}-${n}`);if(el&&el.classList.contains('active')){total+=n;count++;break;}}});
+  if(count>0)scores[mid]=Math.round((total/(count*5))*100);else delete scores[mid];
 }
-
 function upFin(k,v){
-  finD[k]=parseInt(v)||0;
+  finD[k]=v||0;
   const aset=finD.tabungan+finD.deposito+finD.darurat+finD.emas+finD.pesangon;
   const burn=finD.pokok+finD.kpr+finD.kendaraan+finD.pendidikan+finD.bpjs+finD.transport+finD.komunikasi+finD.kesehatan+finD.anak+finD.gaya+finD.buffer;
   const fmt=n=>'Rp '+n.toLocaleString('id-ID');
-  const col=m=>m>=6?'green':m>=3?'yellow':'red';
+  const col=m=>m>=12?'green':m>=6?'yellow':'red';
   const fA=document.getElementById('fA');if(fA)fA.textContent=fmt(aset);
   const fB=document.getElementById('fB');if(fB)fB.textContent=fmt(burn);
   const rEl=document.getElementById('fR');
@@ -564,116 +319,45 @@ function upFin(k,v){
     const mo=Math.floor(aset/burn);
     rEl.textContent=mo+' bulan';
     rEl.className='fr-val runway-big '+col(mo);
-    scores['m1']=mo>=12?100:mo>=6?75:mo>=3?45:20;
-  } else {
-    rEl.textContent='—';
-    rEl.className='fr-val runway-big';
-    delete scores['m1'];
-  }
+    scores['m1']=mo>=12?100:mo>=6?70:mo>=3?40:15;
+  } else {rEl.textContent='—';rEl.className='fr-val runway-big';delete scores['m1'];}
 }
-
 function showDash(){
   const ids=['m1','m2','m2b','m3','m3b','m4','m5','m6','m7'];
   const labels={m1:'Finansial',m2:'Toxic Environment',m2b:'Manage Out & Layoff',m3:'Kesehatan',m3b:'Stress & Kebiasaan',m4:'Keluarga',m5:'Mental',m6:'Identitas',m7:'Rencana'};
-
-  // Check unanswered (skip modules that are skipped)
   const missing=[];
-  ids.forEach((id,idx)=>{
-    if(skippedModules[id]) return;
-    const {answered,total}=countAnswered(idx);
-    if(answered<total) missing.push(id);
-  });
-
+  ids.forEach((id,idx)=>{if(skippedModules[id])return;const{answered,total}=countAnswered(idx);if(answered<total)missing.push(id);});
   if(missing.length>0){
     document.querySelectorAll('.mod').forEach(m=>m.classList.remove('active'));
     document.getElementById('dash').classList.remove('active');
     const errDiv=document.getElementById('errScreen');
     errDiv.style.cssText='display:flex;min-height:100vh;align-items:center;justify-content:center;padding:2rem 1.5rem;flex-direction:column;text-align:center';
-    errDiv.innerHTML=`
-      <div style="max-width:420px">
-        <div style="font-size:2.5rem;margin-bottom:1rem">⚠️</div>
-        <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:.75rem;color:var(--text)">Belum selesai.</h2>
-        <p style="font-size:.95rem;color:var(--muted);line-height:1.7;margin-bottom:1.5rem;font-weight:500">Isi semua modul dulu biar hasilnya akurat.</p>
-        <div style="margin-bottom:1.5rem">${missing.map(id=>`<div style="padding:.75rem 1rem;margin:.4rem 0;background:var(--card);border:1.5px solid var(--red);border-radius:6px;font-size:.9rem;font-weight:600;color:var(--red)">${labels[id]}</div>`).join('')}</div>
-        <button onclick="goToMissing()" style="width:100%;padding:.95rem;background:var(--gold);border:none;color:var(--dark);font-size:1rem;font-weight:700;border-radius:6px;cursor:pointer;min-height:52px;font-family:var(--font)">Lanjut Isi →</button>
-      </div>`;
-    window.scrollTo({top:0,behavior:'smooth'});
-    return;
+    errDiv.innerHTML=`<div style="max-width:420px"><div style="font-size:2.5rem;margin-bottom:1rem">⚠️</div><h2 style="font-size:1.5rem;font-weight:800;margin-bottom:.75rem;color:var(--text)">Belum selesai.</h2><p style="font-size:.95rem;color:var(--muted);line-height:1.7;margin-bottom:1.5rem;font-weight:500">Isi semua modul dulu biar hasilnya akurat.</p><div style="margin-bottom:1.5rem">${missing.map(id=>`<div style="padding:.75rem 1rem;margin:.4rem 0;background:var(--card);border:1.5px solid var(--red);border-radius:6px;font-size:.9rem;font-weight:600;color:var(--red)">${labels[id]}</div>`).join('')}</div><button onclick="goToMissing()" style="width:100%;padding:.95rem;background:var(--gold);border:none;color:var(--dark);font-size:1rem;font-weight:700;border-radius:6px;cursor:pointer;min-height:52px;font-family:var(--font)">Lanjut Isi →</button></div>`;
+    window.scrollTo({top:0,behavior:'smooth'});return;
   }
-
   document.querySelectorAll('.mod').forEach(m=>m.classList.remove('active'));
   document.getElementById('errScreen').style.display='none';
-  const dash=document.getElementById('dash');
-  dash.classList.add('active');
-  updateDots(M.length);
-  window.scrollTo({top:0,behavior:'smooth'});
-
-  // Calculate average — only from non-skipped modules that have scores
+  const dash=document.getElementById('dash');dash.classList.add('active');updateDots(M.length);window.scrollTo({top:0,behavior:'smooth'});
   const filled=ids.filter(id=>scores[id]!==undefined&&scores[id]!=='SKIP'&&!skippedModules[id]);
-  const avg=filled.length>0?Math.round(filled.reduce((a,id)=>a+scores[id],0)/filled.length):0;
+  const finScore=scores['m1']||0;
+  let weightedSum=0,weightedCount=0;
+  filled.forEach(id=>{const w=id==='m1'?2:1;weightedSum+=scores[id]*w;weightedCount+=w;});
+  let avg=weightedCount>0?Math.round(weightedSum/weightedCount):0;
+  if(finScore<40)avg=Math.min(avg,55);
+  else if(finScore<70)avg=Math.min(avg,75);
   const col=s=>s>=70?'var(--green)':s>=40?'var(--yellow)':'var(--red)';
   const totalModules=ids.filter(id=>!skippedModules[id]).length;
-
   const verdicts=[
-    {min:70,title:'Kamu relatif siap.',text:'Bukan berarti mudah. Tapi kondisi kamu secara keseluruhan cukup untuk mulai bergerak.',c:'var(--green)',
-     ctaTitle:'Langkah berikutnya: tentukan arahmu.',ctaText:'Pastikan langkah keluarmu benar. Panduan lengkap resign yang benar sudah tersedia.',ctaBtn:'Lihat Panduan di The 40 Reset →'},
-    {min:40,title:'Ada yang perlu diperkuat dulu.',text:'Kamu tidak dalam kondisi darurat — tapi ada area yang perlu dibenahi. Kamu belum harus keluar sekarang.',c:'var(--yellow)',
-     ctaTitle:'Survival guide + siapkan CV kamu sekarang.',ctaText:'Yang kamu butuhkan adalah cara bertahan sambil nyiapin jalan keluar yang benar.',ctaBtn:'Lihat Survival Guide & CV Template →'},
-    {min:0,title:'Ini saatnya berhenti pura-pura baik-baik saja.',text:'Kondisi kamu berat sekarang. Tapi ini bukan akhir segalanya — ini titik awal yang jujur.',c:'var(--red)',
-     ctaTitle:'Mulai siapkan jalan keluarmu.',ctaText:'Kalau kamu sudah siap explore peluang baru — mulai dari CV yang kuat. Sambil itu, ada panduan untuk bertahan di kondisi yang sedang berat sekarang.',ctaBtn:'Lihat Panduan & CV Template →'},
+    {min:70,title:'Kamu relatif siap.',text:'Bukan berarti mudah. Tapi kondisi kamu secara keseluruhan cukup untuk mulai bergerak.',c:'var(--green)',ctaTitle:'Langkah berikutnya: tentukan arahmu.',ctaText:'Pastikan langkah keluarmu benar. Panduan lengkap resign yang benar sudah tersedia.',ctaBtn:'Lihat Panduan di The 40 Reset →'},
+    {min:40,title:'Ada yang perlu diperkuat dulu.',text:'Kamu tidak dalam kondisi darurat — tapi ada area yang perlu dibenahi. Kamu belum harus keluar sekarang.',c:'var(--yellow)',ctaTitle:'Survival guide + siapkan CV kamu sekarang.',ctaText:'Yang kamu butuhkan adalah cara bertahan sambil nyiapin jalan keluar yang benar.',ctaBtn:'Lihat Survival Guide & CV Template →'},
+    {min:0,title:'Ini saatnya berhenti pura-pura baik-baik saja.',text:'Kondisi kamu berat sekarang. Tapi ini bukan akhir segalanya — ini titik awal yang jujur.',c:'var(--red)',ctaTitle:'Mulai siapkan jalan keluarmu.',ctaText:'Kalau kamu sudah siap explore peluang baru — mulai dari CV yang kuat. Sambil itu, ada panduan untuk bertahan di kondisi yang sedang berat sekarang.',ctaBtn:'Lihat Panduan & CV Template →'},
   ];
   const v=verdicts.find(x=>avg>=x.min)||verdicts[2];
-
-  dash.innerHTML=`
-    <div class="mod-tag">Dashboard · The 40 Reset</div>
-    <h2 class="mod-title">Ini kondisi kamu sekarang.</h2>
-    <div class="mod-line"></div>
-    <div class="dash-score">
-      <div class="dash-num" style="color:${col(avg)}">${avg}%</div>
-      <div class="dash-label">Skor Kesiapan Resign</div>
-      ${filled.length<totalModules?`<div style="font-size:.8rem;color:var(--yellow);margin-top:.4rem;font-weight:600">${filled.length} dari ${totalModules} modul dihitung</div>`:''}
-    </div>
-    <div class="verdict" style="border-color:${v.c}">
-      <div class="verdict-title" style="color:${v.c}">${v.title}</div>
-      <div class="verdict-text">${v.text}</div>
-    </div>
-    ${ids.map(id=>{
-      const isSkipped=skippedModules[id];
-      const s=scores[id];
-      return `<div class="dm-row">
-        <div class="dm-name">${labels[id]}</div>
-        ${isSkipped
-          ? `<div class="dm-skipped">Dilewati</div>`
-          : `<div class="dm-bar-bg"><div class="dm-bar-fill" style="width:${s||0}%;background:${col(s||0)}"></div></div>
-             <div class="dm-score" style="color:${col(s||0)}">${s>0?s+'%':'—'}</div>`
-        }
-      </div>`;
-    }).join('')}
-    <div class="cta-box">
-      <div class="cta-tag">Langkah Selanjutnya</div>
-      <div class="cta-title">${v.ctaTitle}</div>
-      <div class="cta-sub">${v.ctaText}</div>
-      <button class="cta-btn" onclick="window.open('https://lynk.id/the_40_reset','_blank')">${v.ctaBtn}</button>
-      <p style="font-size:.8rem;color:var(--muted);margin-top:1rem;line-height:1.6;font-weight:500">Gabung komunitas THE 40 RESET — untuk mereka yang sedang dalam proses yang sama.<br><a href="https://lynk.id/the_40_reset" target="_blank" style="color:var(--gold);text-decoration:none;font-weight:700">lynk.id/the_40_reset →</a></p>
-    </div>
-    <div class="nav-btns">
-      <button class="btn-back" onclick="show(${M.length-1})">← Kembali</button>
-      <button class="btn-next" onclick="window.open('https://lynk.id/the_40_reset','_blank')">Lihat Produk →</button>
-    </div>`;
+  dash.innerHTML=`<div class="mod-tag">Dashboard · The 40 Reset</div><h2 class="mod-title">Ini kondisi kamu sekarang.</h2><div class="mod-line"></div><div class="dash-score"><div class="dash-num" style="color:${col(avg)}">${avg}%</div><div class="dash-label">Skor Kesiapan Resign</div>${filled.length<totalModules?`<div style="font-size:.8rem;color:var(--yellow);margin-top:.4rem;font-weight:600">${filled.length} dari ${totalModules} modul dihitung</div>`:''}</div><div class="verdict" style="border-color:${v.c}"><div class="verdict-title" style="color:${v.c}">${v.title}</div><div class="verdict-text">${v.text}</div></div>${ids.map(id=>{const isSkipped=skippedModules[id],s=scores[id];return`<div class="dm-row"><div class="dm-name">${labels[id]}${id==='m1'?' ⭐':''}</div>${isSkipped?`<div class="dm-skipped">Dilewati</div>`:`<div class="dm-bar-bg"><div class="dm-bar-fill" style="width:${s||0}%;background:${col(s||0)}"></div></div><div class="dm-score" style="color:${col(s||0)}">${s>0?s+'%':'—'}</div>`}</div>`;}).join('')}<div style="font-size:.78rem;color:var(--muted);margin:.5rem 0 1.5rem;font-weight:500">⭐ Finansial dihitung dengan bobot lebih tinggi — kesiapan finansial adalah fondasi utama resign.</div><div class="cta-box"><div class="cta-tag">Langkah Selanjutnya</div><div class="cta-title">${v.ctaTitle}</div><div class="cta-sub">${v.ctaText}</div><button class="cta-btn" onclick="window.open('https://lynk.id/the_40_reset','_blank')">${v.ctaBtn}</button><p style="font-size:.8rem;color:var(--muted);margin-top:1rem;line-height:1.6;font-weight:500">Gabung komunitas THE 40 RESET — untuk mereka yang sedang dalam proses yang sama.<br><a href="https://lynk.id/the_40_reset" target="_blank" style="color:var(--gold);text-decoration:none;font-weight:700">lynk.id/the_40_reset →</a></p></div><div class="nav-btns"><button class="btn-back" onclick="show(${M.length-1})">← Kembali</button><button class="btn-next" onclick="window.open('https://lynk.id/the_40_reset','_blank')">Lihat Produk →</button></div>`;
 }
-
 function goToMissing(){
   const ids=['m1','m2','m2b','m3','m3b','m4','m5','m6','m7'];
-  for(let idx=0;idx<ids.length;idx++){
-    const id=ids[idx];
-    if(skippedModules[id]) continue;
-    const {answered,total}=countAnswered(idx);
-    if(answered<total){
-      document.getElementById('errScreen').style.display='none';
-      show(idx);
-      break;
-    }
-  }
+  for(let idx=0;idx<ids.length;idx++){const id=ids[idx];if(skippedModules[id])continue;const{answered,total}=countAnswered(idx);if(answered<total){document.getElementById('errScreen').style.display='none';show(idx);break;}}
 }
 </script>
 </body>
