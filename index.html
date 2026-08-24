@@ -289,75 +289,828 @@ body.dashboard-active #dash{max-width:1240px;padding:0 18px 56px}
 }
 </style>
 
+
+<style id="crc-mockup-v2-style">
+:root{
+  --crc-black:#05080d;
+  --crc-panel:#0a0f15;
+  --crc-card:#11171d;
+  --crc-card2:#171c22;
+  --crc-gold:#F7B82D;
+  --crc-gold2:#FFD66D;
+  --crc-muted:#9da5af;
+  --crc-text:#fff7e8;
+  --crc-line:rgba(255,255,255,.10);
+}
+#lock.crc-flow{
+  min-height:100svh!important;
+  display:block!important;
+  padding:0!important;
+  overflow:visible!important;
+  background:
+    radial-gradient(circle at 50% -10%,rgba(247,184,45,.10),transparent 34%),
+    linear-gradient(180deg,#03070b,#071018 52%,#03070b)!important;
+  color:var(--crc-text)!important;
+}
+#lock.crc-flow:before,#lock.crc-flow:after{display:none!important}
+.crc-shell{min-height:100svh}
+.crc-topbar{
+  min-height:62px;display:flex;align-items:center;justify-content:space-between;
+  padding:10px 16px;border-bottom:1px solid var(--crc-line);
+  background:rgba(3,7,11,.92);backdrop-filter:blur(16px);position:sticky;top:0;z-index:90
+}
+.crc-brand{display:flex;align-items:center;gap:4px;color:var(--crc-text);text-decoration:none!important;font-weight:950;letter-spacing:.03em}
+.crc-brand b{font-size:24px;color:var(--crc-gold);line-height:1}
+.crc-brand-small{font-size:9px;letter-spacing:.08em}
+.crc-exit,.crc-mini-exit{
+  color:#d3b15d;text-decoration:none!important;font-size:9px;font-weight:950;letter-spacing:.06em
+}
+.crc-free-main{width:100%}
+.crc-free-screen{display:none;min-height:calc(100svh - 62px)}
+.crc-free-screen.active{display:block}
+.crc-opening-card{
+  position:relative;min-height:calc(100svh - 62px);overflow:hidden;
+  background:#05080d;
+}
+.crc-opening-visual{
+  position:absolute;inset:0;background-position:center bottom;background-size:cover;background-repeat:no-repeat;
+  filter:saturate(.9) contrast(1.07) brightness(.78);
+}
+.crc-opening-overlay{
+  position:absolute;inset:0;background:
+   radial-gradient(circle at 50% 30%,rgba(247,184,45,.10),transparent 28%),
+   linear-gradient(180deg,rgba(3,7,11,.28) 0%,rgba(3,7,11,.62) 46%,rgba(3,7,11,.97) 78%,#03070b 100%);
+}
+.crc-opening-content{
+  position:relative;z-index:2;min-height:calc(100svh - 62px);max-width:460px;margin:0 auto;
+  padding:88px 20px 24px;display:flex;flex-direction:column;justify-content:flex-end
+}
+.crc-pill{
+  width:max-content;max-width:100%;border:1px solid rgba(247,184,45,.42);border-radius:999px;
+  padding:6px 10px;color:var(--crc-gold);font-size:9px;font-weight:950;letter-spacing:.10em;margin-bottom:16px;
+  background:rgba(5,8,13,.55);backdrop-filter:blur(10px)
+}
+.crc-opening-content h1,.crc-big-title{
+  margin:0;color:#fff;font-size:clamp(38px,11vw,58px);font-weight:950;line-height:.96;letter-spacing:-.055em
+}
+.crc-opening-content h1 em,.crc-big-title em{font-style:normal;color:var(--crc-gold)}
+.crc-opening-content>p{margin:15px 0 17px;color:#f1eee8;font-size:14px;line-height:1.55;font-weight:750}
+.crc-preview-meta{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 15px}
+.crc-preview-meta span{
+  font-size:9px;color:#eee3cd;border:1px solid rgba(247,184,45,.24);background:rgba(5,8,13,.58);
+  border-radius:999px;padding:6px 8px;font-weight:850
+}
+.crc-gold-btn{
+  width:100%;min-height:56px;border:0;border-radius:10px;padding:14px 16px;
+  background:linear-gradient(135deg,#FFE07A 0%,#F7B82D 48%,#C8870E 100%);
+  color:#080a0d!important;font-family:var(--font);font-size:14px;font-weight:950;cursor:pointer;
+  box-shadow:0 15px 36px rgba(247,184,45,.20);display:flex;align-items:center;justify-content:center;
+  text-decoration:none!important
+}
+.crc-trust{margin-top:12px;text-align:center;font-size:9px;color:#a8a199;font-weight:750;line-height:1.5}
+.crc-text-link{
+  margin:11px auto 0;border:0;background:none;color:#c9ad68;font-family:var(--font);font-size:10px;font-weight:900;cursor:pointer
+}
+.crc-preview-wrap{max-width:470px;margin:0 auto;padding:24px 18px 38px}
+.crc-preview-head{display:grid;grid-template-columns:38px 1fr 52px;gap:10px;align-items:start;margin-bottom:40px}
+.crc-icon-btn{
+  width:36px;height:36px;border-radius:50%;border:1px solid var(--crc-line);background:rgba(255,255,255,.04);
+  color:var(--crc-text);font-size:18px;cursor:pointer
+}
+.crc-counter{font-size:10px;color:#b8bfc6;font-weight:900;letter-spacing:.06em;margin-bottom:9px}
+.crc-segments{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.crc-segments span{height:5px;border-radius:99px;background:rgba(255,255,255,.13)}
+.crc-segments span.done,.crc-segments span.active{background:var(--crc-gold)}
+.crc-segments span.active{box-shadow:0 0 12px rgba(247,184,45,.45)}
+.crc-mini-exit{text-align:right;padding-top:8px}
+.crc-preview-question-card{padding-top:6px}
+.crc-preview-question-card h2{
+  margin:0 0 12px;color:#fff;font-size:clamp(25px,7vw,34px);line-height:1.18;letter-spacing:-.035em;font-weight:900
+}
+.crc-q-mini{font-size:11px;color:#9da5af;line-height:1.5;margin-bottom:20px}
+.crc-preview-choices{display:grid;gap:9px}
+.crc-preview-choice{
+  width:100%;min-height:58px;border:1px solid rgba(255,255,255,.08);border-radius:9px;
+  background:linear-gradient(180deg,#171c21,#11161b);color:#fff;display:grid;
+  grid-template-columns:34px 1fr;gap:10px;align-items:center;padding:10px 13px;text-align:left;
+  font-family:var(--font);font-weight:850;cursor:pointer
+}
+.crc-preview-choice .n{
+  width:27px;height:27px;border-radius:50%;border:1px solid rgba(255,255,255,.18);
+  display:grid;place-items:center;font-size:11px
+}
+.crc-preview-choice .label{font-size:13px;line-height:1.25}
+.crc-preview-choice.active{
+  border-color:rgba(247,184,45,.66);background:linear-gradient(135deg,#e6ac26,#f5c557);
+  color:#101010;box-shadow:0 10px 28px rgba(247,184,45,.18)
+}
+.crc-preview-choice.active .n{border-color:rgba(0,0,0,.25);background:rgba(0,0,0,.12)}
+.crc-bottom-note{
+  margin-top:38px;border-top:1px solid rgba(255,255,255,.06);padding-top:16px;text-align:center;
+  color:#9ba1a7;font-size:10px;line-height:1.55
+}
+.crc-result-kicker{font-size:10px;letter-spacing:.15em;color:var(--crc-gold);font-weight:950;margin-bottom:10px}
+.crc-big-title{font-size:clamp(38px,10vw,54px);margin-bottom:13px}
+.crc-lead{font-size:13px;color:#d0d4d7;line-height:1.6;margin-bottom:20px}
+.crc-early-grid{display:grid;gap:10px}
+.crc-early-card{
+  display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:center;
+  padding:15px;border:1px solid rgba(255,255,255,.08);border-radius:10px;
+  background:linear-gradient(180deg,#151a20,#10151a)
+}
+.crc-early-icon{
+  width:45px;height:45px;border-radius:50%;display:grid;place-items:center;font-size:22px;
+  background:rgba(247,184,45,.10);border:1px solid rgba(247,184,45,.18)
+}
+.crc-early-card small{display:block;color:#a2a9b0;font-size:9px;margin-bottom:2px}
+.crc-early-card b{display:block;color:var(--crc-gold);font-size:17px;line-height:1.1}
+.crc-early-card p{margin:4px 0 0;color:#c4c9ce;font-size:10px;line-height:1.45}
+.crc-locked-tease{
+  display:grid;grid-template-columns:30px 1fr;gap:10px;margin:15px 0;padding:14px;
+  border:1px solid rgba(255,255,255,.08);border-radius:10px;background:#11161b
+}
+.crc-locked-tease b{display:block;color:#fff;font-size:12px}
+.crc-locked-tease small{display:block;color:#9ea5ab;font-size:9.5px;line-height:1.5;margin-top:3px}
+.crc-paywall-wrap{position:relative}
+.crc-paywall-back{margin-bottom:18px}
+.crc-lock-list{display:grid;gap:1px;margin:15px 0;background:rgba(255,255,255,.05);border-radius:10px;overflow:hidden}
+.crc-lock-list>div{
+  padding:12px 13px;background:#12171c;border-bottom:1px solid rgba(255,255,255,.055);
+  display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:center;font-size:11px;color:#e1e4e7;font-weight:800
+}
+.crc-lock-list>div:last-child{border-bottom:0}
+.crc-price-box{
+  border:1px solid rgba(247,184,45,.58);border-radius:10px;padding:16px;text-align:center;margin:14px 0 10px;
+  background:linear-gradient(180deg,rgba(247,184,45,.055),rgba(255,255,255,.02))
+}
+.crc-price{font-size:27px;color:#fff;font-weight:950}
+.crc-price-box small{color:var(--crc-gold);font-size:10px;font-weight:900}
+.crc-saved-note{
+  border:1px solid rgba(85,215,122,.20);background:rgba(85,215,122,.055);
+  border-radius:10px;padding:12px 13px;margin:10px 0 13px
+}
+.crc-saved-note b{display:block;color:#8fe6a8;font-size:10.5px;margin-bottom:4px}
+.crc-saved-note span{display:block;color:#adb5bb;font-size:9.5px;line-height:1.5}
+.crc-anchor-btn{margin-top:0}
+.crc-payment-trust{text-align:center;color:#929aa2;font-size:9px;margin:9px 0 20px}
+.crc-access-card{
+  margin-top:15px;padding:17px;border:1px solid rgba(247,184,45,.25);border-radius:12px;
+  background:linear-gradient(180deg,#11171d,#0b1015)
+}
+.crc-access-kicker{font-size:9px;letter-spacing:.14em;color:var(--crc-gold);font-weight:950;margin-bottom:5px}
+.crc-access-card h3{font-size:14px;line-height:1.4;color:#fff;margin-bottom:12px}
+.crc-code-input{
+  background:#080d12!important;border:1px solid rgba(255,255,255,.13)!important;color:#fff!important;
+  border-radius:9px!important;margin-bottom:9px!important
+}
+.crc-paywall-links{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:18px 0 10px}
+.crc-paywall-links a{color:#bfa45f;text-decoration:none;font-size:9px;font-weight:900}
+.crc-charity{
+  border-top:1px solid rgba(255,255,255,.07);padding-top:12px;color:#92999f;font-size:9px;line-height:1.5
+}
+
+/* ===== FULL ASSESSMENT: MOCKUP SKIN ===== */
+#app{background:linear-gradient(180deg,#03070b,#071018 55%,#03070b);min-height:100svh}
+#app .topbar{
+  min-height:56px;padding:8px 12px;background:rgba(3,7,11,.92);border-bottom:1px solid rgba(255,255,255,.07)
+}
+#app .topbar-brand{font-size:10px!important;letter-spacing:.05em!important}
+#app .topbar-brand a{color:var(--crc-gold)!important;text-decoration:none!important;font-weight:950}
+#app .progress-wrap{max-width:42%!important}
+#cover{display:none!important}
+.mode-screen{max-width:760px!important;padding:22px 16px 42px!important}
+.mode-head{padding:2px 0 12px!important}
+.mode-kicker{font-size:9px!important}
+.mode-title{font-size:clamp(29px,8vw,40px)!important}
+.mode-sub{font-size:12px!important}
+.mode-grid{gap:11px!important}
+.mode-card{border-radius:14px!important;background:linear-gradient(180deg,#12181e,#0c1116)!important}
+.mode-img{height:170px!important}
+.mode-content{padding:13px!important}
+.mode-card-title{font-size:17px!important}
+.mode-card-copy{font-size:11px!important}
+.mode-btn{border-radius:9px!important;min-height:52px!important;font-size:12px!important}
+
+.mod{
+  max-width:520px!important;min-height:calc(100svh - 56px);padding:24px 18px 38px!important;margin:0 auto!important;
+}
+.crc-module-head{margin-bottom:20px}
+.crc-module-head .mod-tag{font-size:9px!important;letter-spacing:.12em!important;margin-bottom:7px!important}
+.crc-module-title{font-size:26px;line-height:1.1;letter-spacing:-.035em;color:#fff;font-weight:950;margin-bottom:8px}
+.crc-module-sub{font-size:10.5px;color:#9ca4ab;line-height:1.55}
+.crc-fin-wrap .fin-section-title{font-size:9px!important}
+.crc-fin-wrap .fin-note{font-size:10px!important}
+.crc-fin-wrap .fin-row{border-radius:9px!important;padding:11px!important;margin-bottom:8px!important;background:#11161b!important}
+.crc-fin-wrap .fin-label{font-size:11px!important}
+.crc-fin-wrap .fin-input{min-height:50px!important;border-radius:8px!important;font-size:13px!important}
+.crc-fin-wrap .fin-result{border-radius:10px!important}
+.crc-fin-next{margin-top:14px}
+
+.crc-q{
+  display:none;background:none!important;border:0!important;padding:0!important;margin:0!important
+}
+.crc-q.q-current{display:block!important}
+.crc-q-progress-label{font-size:9px;color:#aeb5bb;font-weight:900;letter-spacing:.06em;margin-bottom:8px}
+.crc-q-progress{height:6px;border-radius:99px;background:rgba(255,255,255,.10);overflow:hidden;margin-bottom:30px}
+.crc-q-progress>span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--crc-gold),#f5d271)}
+.crc-q .q-text{
+  color:#fff!important;font-size:clamp(22px,6.2vw,29px)!important;line-height:1.25!important;
+  letter-spacing:-.025em!important;font-weight:900!important;margin-bottom:8px!important
+}
+.crc-q .q-hint{font-size:10px!important;color:#929aa2!important;margin-bottom:18px!important}
+.crc-q .q-scale{
+  display:grid!important;grid-template-columns:1fr!important;gap:9px!important
+}
+.crc-q .sq{
+  width:100%!important;min-height:57px!important;line-height:1.2!important;border-radius:9px!important;
+  padding:9px 12px!important;display:grid!important;grid-template-columns:34px 1fr!important;gap:10px!important;
+  align-items:center!important;text-align:left!important;background:linear-gradient(180deg,#171c21,#11161b)!important;
+  border:1px solid rgba(255,255,255,.08)!important;color:#fff!important;font-size:12px!important
+}
+.crc-q .sq .crc-choice-number{
+  width:27px;height:27px;border-radius:50%;border:1px solid rgba(255,255,255,.18);
+  display:grid;place-items:center;font-size:10px
+}
+.crc-q .sq.active{
+  background:linear-gradient(135deg,#e6ac26,#f5c557)!important;color:#111!important;
+  border-color:rgba(247,184,45,.65)!important;box-shadow:0 10px 25px rgba(247,184,45,.15)!important
+}
+.crc-q .sq.active .crc-choice-number{border-color:rgba(0,0,0,.24);background:rgba(0,0,0,.10)}
+.crc-q .btn-irrelevant{
+  grid-column:auto!important;min-height:52px!important;border-radius:9px!important;font-size:11px!important
+}
+.crc-q .q-labels{display:none!important}
+.crc-q-nav{
+  display:grid;grid-template-columns:44px 1fr;gap:9px;margin-top:18px;padding-top:15px;border-top:1px solid rgba(255,255,255,.06)
+}
+.crc-q-back{
+  min-height:50px;border:1px solid rgba(255,255,255,.10);border-radius:9px;background:#11161b;color:#fff;font-size:18px
+}
+.crc-q-next{
+  min-height:50px;border:0;border-radius:9px;background:linear-gradient(135deg,#FFE07A,#F7B82D,#C8870E);
+  color:#080a0d;font-family:var(--font);font-size:12px;font-weight:950
+}
+.skip-banner{border-radius:10px!important;padding:12px!important;margin-bottom:15px!important}
+.skip-banner p{font-size:10px!important}
+.skip-btn{border-radius:9px!important;min-height:50px!important;font-size:11px!important}
+
+/* Remove old module visual/story clutter from the re-skinned assessment. */
+.mod>.scene,.mod>.mod-tag,.mod>.mod-title,.mod>.mod-line,.mod>.mod-story,.mod>.mod-tip,.mod>.nav-btns{display:none!important}
+
+/* ===== RESULT: SIMPLE MOCKUP LAYOUT ===== */
+body.dashboard-active #dash{
+  max-width:520px!important;padding:18px 14px 42px!important;margin:0 auto!important
+}
+.crc-result-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.crc-result-topbar a{color:var(--crc-gold);text-decoration:none;font-size:9px;font-weight:950}
+.crc-result-topbar span{font-size:9px;letter-spacing:.10em;color:#d8bd79;font-weight:950}
+.crc-result-card{
+  border:1px solid rgba(255,255,255,.08);border-radius:12px;background:linear-gradient(180deg,#11171d,#0a0f14);
+  padding:18px;margin-bottom:12px
+}
+.crc-result-label{font-size:10px;color:#d9dde0;font-weight:900;letter-spacing:.06em;margin-bottom:7px}
+.crc-score-line{display:flex;align-items:flex-end;gap:7px;margin:4px 0}
+.crc-score-num{font-size:61px;line-height:.85;color:var(--crc-gold);font-weight:950;letter-spacing:-.06em}
+.crc-score-den{font-size:18px;color:#9ea6ad;font-weight:850;margin-bottom:5px}
+.crc-score-status{font-size:18px;color:var(--crc-gold);font-weight:950;margin:8px 0}
+.crc-result-copy{font-size:10.5px;color:#aeb5bb;line-height:1.55}
+.crc-area-title{font-size:10px;color:#fff;font-weight:950;margin-bottom:10px}
+.crc-area-row{display:grid;grid-template-columns:1fr 94px 30px;gap:9px;align-items:center;padding:7px 0}
+.crc-area-name{font-size:10px;color:#e2e5e7;font-weight:800}
+.crc-bar{height:6px;border-radius:99px;background:#080b0e;overflow:hidden}
+.crc-bar span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#d99b14,#f3c95c)}
+.crc-area-score{font-size:9px;color:#b8bec3;text-align:right}
+.crc-result-btn{
+  width:100%;min-height:53px;border-radius:9px;border:0;background:linear-gradient(135deg,#FFE07A,#F7B82D,#C8870E);
+  color:#0a0b0d;font-family:var(--font);font-size:12px;font-weight:950;margin-top:12px
+}
+.crc-insight-panel{display:none;margin-top:12px}
+.crc-insight-panel.open{display:block}
+.crc-insight-row{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.crc-insight-row:last-child{border-bottom:0}
+.crc-insight-row b{display:block;font-size:10.5px;color:#fff}
+.crc-insight-row span{display:block;font-size:9.5px;color:#a8b0b7;line-height:1.5;margin-top:3px}
+.crc-next-title{font-size:27px;line-height:1.05;color:#fff;font-weight:950;letter-spacing:-.035em;margin-bottom:13px}
+.crc-next-row{display:grid;grid-template-columns:38px 1fr;gap:11px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.crc-next-num{
+  width:34px;height:34px;border-radius:50%;border:1px solid rgba(247,184,45,.70);display:grid;place-items:center;
+  color:var(--crc-gold);font-size:14px;font-weight:950
+}
+.crc-next-row b{display:block;color:#fff;font-size:11.5px}
+.crc-next-row p{margin:3px 0 0;color:#a9b0b6;font-size:9.5px;line-height:1.5}
+.crc-final-note{margin-top:13px;padding:13px;background:#151a20;border-radius:9px;color:#c3c8cc;font-size:10px;line-height:1.55}
+.crc-dual-cta{display:grid;gap:9px;margin-top:13px}
+.crc-secondary-btn{
+  min-height:50px;border:1px solid rgba(247,184,45,.48);border-radius:9px;background:transparent;color:#fff;
+  font-family:var(--font);font-size:11px;font-weight:900
+}
+.crc-footer-links{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:14px}
+.crc-footer-links a{color:#bca15d;text-decoration:none;font-size:9px;font-weight:900}
+
+@media(min-width:760px){
+  .crc-opening-content{padding-top:130px}
+  .crc-preview-wrap{padding-top:44px}
+  .crc-opening-card{min-height:calc(100svh - 62px)}
+}
+</style>
+
+
+<style id="crc-simple-16p-context-style">
+/* Critical paid/unpaid separation */
+#lock.crc-flow.crc-hidden,
+body.crc-paid-mode #lock.crc-flow{
+  display:none!important;
+  visibility:hidden!important;
+  min-height:0!important;
+  height:0!important;
+  overflow:hidden!important;
+}
+
+/* Remove cinematic hero behavior only for the new free opening */
+.crc-simple-opening{
+  width:min(1080px,100%);
+  margin:0 auto;
+  padding:54px 18px 36px;
+}
+.crc-simple-head{
+  max-width:680px;
+  margin:0 auto 34px;
+  text-align:center;
+}
+.crc-simple-icon{
+  width:48px;height:48px;border-radius:50%;
+  display:grid;place-items:center;margin:0 auto 14px;
+  border:1px solid rgba(247,184,45,.42);
+  background:rgba(247,184,45,.08);
+  color:var(--crc-gold);font-weight:950;font-size:18px;
+}
+.crc-simple-head h1{
+  margin:0;
+  color:#fff;
+  font-size:clamp(34px,6vw,58px);
+  line-height:1;
+  letter-spacing:-.05em;
+  font-weight:950;
+}
+.crc-simple-head p{
+  margin:13px 0 10px;
+  color:#e5e1d8;
+  font-size:clamp(14px,2.1vw,18px);
+  font-weight:750;
+}
+.crc-simple-free{
+  display:inline-flex;
+  padding:7px 10px;
+  border-radius:999px;
+  color:var(--crc-gold);
+  border:1px solid rgba(247,184,45,.33);
+  background:rgba(247,184,45,.06);
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:.08em;
+}
+.crc-context-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin:0 auto 18px;
+}
+.crc-context-card{
+  min-height:220px;
+  border:1px solid rgba(255,255,255,.10);
+  border-top:3px solid rgba(247,184,45,.78);
+  border-radius:12px;
+  background:linear-gradient(180deg,#12181e,#0c1116);
+  color:#fff;
+  padding:18px;
+  text-align:left;
+  font-family:var(--font);
+  cursor:pointer;
+  transition:.18s ease;
+}
+.crc-context-card:hover,
+.crc-context-card.selected{
+  transform:translateY(-2px);
+  border-color:rgba(247,184,45,.65);
+  box-shadow:0 16px 42px rgba(0,0,0,.28),0 0 0 1px rgba(247,184,45,.08) inset;
+}
+.crc-context-card.selected{
+  background:
+    radial-gradient(circle at 90% 0%,rgba(247,184,45,.13),transparent 38%),
+    linear-gradient(180deg,#151a1f,#0c1116);
+}
+.crc-context-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:38px;
+}
+.crc-step{
+  display:inline-flex;
+  padding:5px 8px;
+  border-radius:999px;
+  background:rgba(247,184,45,.10);
+  border:1px solid rgba(247,184,45,.25);
+  color:var(--crc-gold);
+  font-size:9px;
+  font-weight:950;
+}
+.crc-context-icon{font-size:28px;color:var(--crc-gold)}
+.crc-context-card h2{
+  margin:0 0 8px;
+  color:#fff;
+  font-size:19px;
+  line-height:1.08;
+  letter-spacing:-.025em;
+  font-weight:950;
+}
+.crc-context-card p{
+  margin:0;
+  color:#b9c0c6;
+  font-size:11px;
+  line-height:1.55;
+  font-weight:700;
+}
+.crc-select-note{
+  text-align:center;
+  color:#8f979e;
+  font-size:10px;
+  margin-top:10px;
+}
+.crc-buyer-link{
+  display:block;
+  margin:12px auto 0;
+}
+
+/* Keep the question directly below context cards */
+#freeQuestion{
+  min-height:auto!important;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+#freeQuestion .crc-preview-wrap{
+  padding-top:36px!important;
+}
+.crc-preview-head{
+  margin-bottom:26px!important;
+}
+
+/* Result navigation */
+.crc-preview-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin:0 0 10px;
+}
+.crc-preview-secondary{
+  min-height:46px;
+  border:1px solid rgba(247,184,45,.38);
+  border-radius:9px;
+  background:rgba(255,255,255,.025);
+  color:#d9bc72;
+  font-family:var(--font);
+  font-size:9px;
+  font-weight:950;
+  padding:9px;
+  cursor:pointer;
+}
+
+@media(max-width:760px){
+  .crc-simple-opening{padding:34px 16px 24px}
+  .crc-simple-head{margin-bottom:24px}
+  .crc-simple-head h1{font-size:34px}
+  .crc-context-grid{grid-template-columns:1fr;gap:10px}
+  .crc-context-card{min-height:0;padding:15px}
+  .crc-context-top{margin-bottom:17px}
+  .crc-context-card h2{font-size:17px}
+  .crc-context-card p{font-size:10.5px}
+}
+@media(max-width:360px){
+  .crc-preview-actions{grid-template-columns:1fr}
+}
+</style>
+
+
+<style id="crc-cinematic-cover-return-style">
+.crc-context-back{
+  display:block;
+  margin:10px auto 0;
+  border:0;
+  background:none;
+  color:#a89565;
+  font-family:var(--font);
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:.05em;
+  cursor:pointer;
+}
+#freeCover .crc-opening-content h1{
+  max-width:560px;
+}
+@media(max-width:640px){
+  #freeCover .crc-opening-content{
+    padding:72px 20px 24px;
+  }
+  #freeCover .crc-opening-content h1{
+    font-size:clamp(39px,12.5vw,57px);
+    line-height:.95;
+  }
+  #freeCover .crc-opening-content>p{
+    max-width:330px;
+  }
+}
+</style>
+
+
+<style id="crc-remove-40-badge-fix">
+.crc-simple-icon{display:none!important}
+.crc-simple-head{padding-top:0!important}
+</style>
+
+
+<style id="crc-payment-steps-clarity">
+.crc-payment-title{margin:20px 0 10px}
+.crc-payment-title h3{
+  margin:2px 0 0;
+  color:#fff;
+  font-size:22px;
+  line-height:1.12;
+  font-weight:950;
+  letter-spacing:-.035em;
+}
+.crc-payment-steps{
+  display:grid;
+  gap:10px;
+  margin:12px 0 4px;
+}
+.crc-payment-step{
+  display:grid;
+  grid-template-columns:42px 1fr;
+  gap:12px;
+  padding:15px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:12px;
+  background:linear-gradient(180deg,#141a20,#0e1318);
+}
+.crc-payment-step-primary{
+  border-color:rgba(247,184,45,.42);
+  background:
+    radial-gradient(circle at 100% 0%,rgba(247,184,45,.10),transparent 36%),
+    linear-gradient(180deg,#151a1f,#0d1217);
+}
+.crc-payment-step-num{
+  width:36px;height:36px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  border:1px solid rgba(247,184,45,.55);
+  color:var(--crc-gold);
+  font-size:10px;
+  font-weight:950;
+}
+.crc-payment-step-body>b{
+  display:block;
+  color:#fff;
+  font-size:12px;
+  line-height:1.3;
+  font-weight:950;
+  margin:1px 0 5px;
+}
+.crc-payment-step-body>p{
+  margin:0;
+  color:#aeb5bb;
+  font-size:10px;
+  line-height:1.55;
+}
+.crc-payment-step-primary .crc-anchor-btn{margin-top:12px}
+.crc-payment-step-body>small{
+  display:block;
+  text-align:center;
+  color:#929aa2;
+  font-size:8.5px;
+  margin-top:8px;
+}
+.crc-payment-step-access .crc-access-card{
+  margin-top:13px;
+  margin-bottom:0;
+}
+@media(max-width:380px){
+  .crc-payment-step{grid-template-columns:36px 1fr;padding:13px;gap:10px}
+  .crc-payment-step-num{width:32px;height:32px}
+}
+</style>
+
 </head>
 <body>
 
-<div id="lock" class="sales-lock">
-  <div class="sales-shell">
-    <div class="sales-topbar">
-      <div class="sales-brand">
-        <div class="sales-logo"><span>THE</span><b>40</b><span>RESET</span></div>
-        <div>
-          <div class="sales-brand-name">THE 40 RESET</div>
-          <div class="sales-brand-sub">Career Reality Check™</div>
-        </div>
-      </div>
-    </div>
 
-    <main class="sales-main">
-      <section class="sales-hero">
-        <div class="sales-kicker">CAREER REALITY CHECK™</div>
-        <h1>LO LAGI MIKIR<br><em>RESIGN?</em></h1>
-        <h2>JANGAN PUTUSKAN DULU.</h2>
-        <div class="sales-rule"></div>
-        <p class="sales-lead">
-          Career Reality Check™ bantu lo membaca kondisi kerja, finansial, kesehatan,
-          risiko manage out/layoff, support system, dan kesiapan lo sebelum mengambil keputusan besar.
-        </p>
+<div id="lock" class="crc-flow">
+  <div class="crc-shell">
+    <header class="crc-topbar">
+      <a class="crc-brand" href="https://the40resetofficial.com/" aria-label="Kembali ke The 40 Reset">
+        <span class="crc-brand-small">THE</span><b>40</b><span class="crc-brand-small">RESET</span>
+      </a>
+      <a class="crc-exit" href="https://the40resetofficial.com/">KEMBALI KE WEBSITE ↗</a>
+    </header>
 
-        <div class="sales-value-grid">
-          <div class="sales-value"><div class="sales-icon">◎</div><b>9 AREA</b><span>PENILAIAN</span></div>
-          <div class="sales-value"><div class="sales-icon">◷</div><b>±30 MENIT</b><span>INTERAKTIF</span></div>
-          <div class="sales-value"><div class="sales-icon">▣</div><b>HASIL PERSONAL</b><span>& REKOMENDASI</span></div>
-          <div class="sales-value"><div class="sales-icon">◇</div><b>BUKAN MOTIVASI</b><span>CERMIN KONDISI LO</span></div>
-        </div>
-      </section>
+    <main class="crc-free-main">
+      <!-- OPENING -->
+      <section id="freeCover" class="crc-free-screen active">
+        <div class="crc-opening-card">
+          <div id="previewHero" class="crc-opening-visual"></div>
+          <div class="crc-opening-overlay"></div>
+          <div class="crc-opening-content">
+            <div class="crc-pill">CAREER REALITY CHECK™</div>
+            <h1>SEBENARNYA,<br><em>KONDISI KERJA LO</em><br>LAGI ADA<br>DI MANA?</h1>
+            <p>Mau resign. Masih mau bertahan. Atau mulai merasa posisi lo nggak aman.</p>
 
-      <section class="sales-pricebox">
-        <div class="sales-price-label">HARGA</div>
-        <div class="sales-price">Rp35.000</div>
-        <div class="sales-price-note">Sekali bayar.</div>
-        <a
-          class="sales-buy"
-          href="https://lynk.id/the_40_reset/3x7ny5v82p9y/checkout"
-          target="_blank"
-          rel="noopener noreferrer"
-          onclick="if(window.fbq){fbq('trackCustom','CareerRealityCheckCheckoutClick');}"
-        >MULAI CAREER REALITY CHECK →</a>
-        <div class="sales-secure">🔒 Langsung ke pembayaran aman</div>
-      </section>
+            <div class="crc-preview-meta">
+              <span>◉ 7 pertanyaan gratis</span>
+              <span>◷ ±3 menit</span>
+              <span>🔒 Hasil lengkap Rp35.000</span>
+            </div>
 
-      <section class="sales-fit">
-        <h3>Cocok buat lo yang:</h3>
-        <div class="sales-fit-list">
-          <div><span>✓</span><p>Sering kepikiran resign tapi belum yakin siap atau belum.</p></div>
-          <div><span>✓</span><p>Sedang di-manage out atau mulai takut kena layoff.</p></div>
-          <div><span>✓</span><p>Ngerasa capek, stuck, atau kehilangan arah di kerjaan.</p></div>
-          <div><span>✓</span><p>Mau ambil keputusan karier dengan lebih aman dan realistis.</p></div>
+            <button class="crc-gold-btn" type="button" onclick="openContextChooser()">MULAI GRATIS →</button>
+            <div class="crc-trust">♢ Aman, anonim, dan rahasia. Jawaban lo nggak disimpan ke publik.</div>
+
+            <button class="crc-text-link" type="button" onclick="showPaywall(true)">Sudah membeli? Masukkan kode akses →</button>
+          </div>
         </div>
       </section>
 
-      <section class="sales-access">
-        <div class="sales-access-kicker">SUDAH MEMBELI?</div>
-        <h3>Masukkan kode akses dari email pembelian lo.</h3>
-        <p>Akses ini khusus pembeli Career Reality Check™.</p>
-        <input type="text" id="codeInput" class="lock-input sales-code-input" placeholder="KODE AKSES" maxlength="10" autocomplete="off">
-        <button class="lock-btn sales-access-btn" onclick="checkCode()">AKSES CAREER REALITY CHECK →</button>
-        <div id="lockErr" class="lock-err"></div>
+      <section id="freeOpening" class="crc-free-screen">
+        <div class="crc-simple-opening">
+          <div class="crc-simple-head">
+<h1>CAREER REALITY CHECK™</h1>
+            <p>Pilih kondisi lo. Jawab 7 pertanyaan gratis.</p>
+            <div class="crc-simple-free">GRATIS · ±3 MENIT · HASIL AWAL LANGSUNG</div>
+          </div>
+
+          <div class="crc-context-grid">
+            <button class="crc-context-card" type="button" data-context="resign" onclick="selectPreviewContext('resign')">
+              <div class="crc-context-top">
+                <span class="crc-step">01</span>
+                <span class="crc-context-icon">↗</span>
+              </div>
+              <h2>KEPIKIRAN RESIGN</h2>
+              <p>Cek apakah memang ada alasan kuat untuk bergerak, atau lo cuma lagi capek.</p>
+            </button>
+
+            <button class="crc-context-card" type="button" data-context="stay" onclick="selectPreviewContext('stay')">
+              <div class="crc-context-top">
+                <span class="crc-step">02</span>
+                <span class="crc-context-icon">◎</span>
+              </div>
+              <h2>MASIH MAU BERTAHAN</h2>
+              <p>Cek apakah kondisi kerja lo masih sehat dan layak dipertahankan.</p>
+            </button>
+
+            <button class="crc-context-card" type="button" data-context="risk" onclick="selectPreviewContext('risk')">
+              <div class="crc-context-top">
+                <span class="crc-step">03</span>
+                <span class="crc-context-icon">⚠</span>
+              </div>
+              <h2>POSISI MULAI NGGAK AMAN</h2>
+              <p>Cek signal manage out, restrukturisasi, atau layoff sebelum terlambat.</p>
+            </button>
+          </div>
+
+          <div class="crc-select-note">Pilih satu kondisi di atas untuk mulai.</div>
+          <button class="crc-context-back" type="button" onclick="showFreeScreen('freeCover')">← KEMBALI</button>
+
+          <button class="crc-text-link crc-buyer-link" type="button" onclick="showPaywall(true)">
+            Sudah membeli? Masukkan kode akses →
+          </button>
+        </div>
       </section>
 
-      <section class="sales-donation">
-        <p>❤️ Setiap produk yang terjual — <b>10% disumbangkan</b> ke yayasan yang membutuhkan. Bukti dibagikan setiap bulan.</p>
+      <!-- FREE QUESTIONS -->
+      <section id="freeQuestion" class="crc-free-screen">
+        <div class="crc-preview-wrap">
+          <div class="crc-preview-head">
+            <button class="crc-icon-btn" type="button" onclick="previewBack()" aria-label="Kembali">←</button>
+            <div>
+              <div id="previewCounter" class="crc-counter">PERTANYAAN 1 DARI 7</div>
+              <div id="previewSegments" class="crc-segments"></div>
+            </div>
+            <a class="crc-mini-exit" href="https://the40resetofficial.com/">KELUAR</a>
+          </div>
+
+          <div class="crc-preview-question-card">
+            <h2 id="previewQuestionText"></h2>
+            <p id="previewQuestionHint" class="crc-q-mini"></p>
+            <div id="previewChoices" class="crc-preview-choices"></div>
+          </div>
+
+          <div class="crc-bottom-note">◉ Pilih yang paling menggambarkan kondisi lo saat ini, bukan yang seharusnya.</div>
+        </div>
+      </section>
+
+      <!-- EARLY PATTERN -->
+      <section id="freeResult" class="crc-free-screen">
+        <div class="crc-preview-wrap">
+          <div class="crc-result-kicker">HASIL AWAL GRATIS</div>
+          <h2 class="crc-big-title">POLA AWAL LO<br>MULAI <em>KELIHATAN.</em></h2>
+          <p class="crc-lead">Berdasarkan jawaban lo sejauh ini:</p>
+
+          <div id="earlyInsightCards" class="crc-early-grid"></div>
+
+          <div class="crc-locked-tease">
+            <span>🔒</span>
+            <div>
+              <b>Ini hasil awal gratis.</b>
+              <small>9 area lengkap, readiness score, prioritas, dan insight personal masih terkunci.</small>
+            </div>
+          </div>
+
+          <div class="crc-preview-actions">
+            <button class="crc-preview-secondary" type="button" onclick="returnToContext()">← GANTI KONDISI</button>
+            <button class="crc-preview-secondary" type="button" onclick="returnToPreview()">CEK JAWABAN LAGI</button>
+          </div>
+
+          <button class="crc-gold-btn" type="button" onclick="showPaywall(false)">BUKA ASSESSMENT LENGKAP →</button>
+        </div>
+      </section>
+
+      <!-- PAYWALL + ACCESS -->
+      <section id="freePaywall" class="crc-free-screen">
+        <div class="crc-preview-wrap crc-paywall-wrap">
+          <button class="crc-icon-btn crc-paywall-back" type="button" onclick="backFromPaywall()" aria-label="Kembali">←</button>
+          <div class="crc-result-kicker">HASIL LENGKAP</div>
+          <h2 class="crc-big-title">MAU LIHAT<br>KONDISI LO<br><em>SECARA UTUH?</em></h2>
+          <p class="crc-lead">Career Reality Check membaca 9 area penting dalam kondisi lo.</p>
+
+          <div class="crc-lock-list">
+            <div>🔒 <span>9 Area Assessment Lengkap</span></div>
+            <div>🔒 <span>Readiness Score & Level</span></div>
+            <div>🔒 <span>Area Paling Perlu Perhatian</span></div>
+            <div>🔒 <span>Prioritas #1 – #3</span></div>
+            <div>🔒 <span>Personal Insights Mendalam</span></div>
+            <div>🔒 <span>Next Steps yang Relevan</span></div>
+          </div>
+
+          <div class="crc-price-box">
+            <div class="crc-price">Rp35.000</div>
+            <small>sekali bayar</small>
+          </div>
+
+          <div class="crc-payment-title">
+            <div class="crc-result-kicker">CARA BUKA HASIL LENGKAP</div>
+            <h3>3 langkah. Selesai.</h3>
+          </div>
+
+          <div class="crc-saved-note">
+            <b>✓ Jawaban preview lo sudah disimpan di browser ini.</b>
+            <span>Pakai browser/device yang sama supaya progress lo tetap ada.</span>
+          </div>
+
+          <div class="crc-payment-steps">
+            <div class="crc-payment-step crc-payment-step-primary">
+              <div class="crc-payment-step-num">01</div>
+              <div class="crc-payment-step-body">
+                <b>BAYAR Rp35.000 DI LYNK.ID</b>
+                <p>Pembayaran dibuka di tab baru. Halaman ini tetap terbuka dan jawaban preview lo tetap tersimpan.</p>
+                <a class="crc-gold-btn crc-anchor-btn"
+                   href="https://lynk.id/the_40_reset/3x7ny5v82p9y/checkout"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   onclick="saveBeforeCheckout(); if(window.fbq){fbq('trackCustom','CareerRealityCheckCheckoutClick');}">
+                   BAYAR Rp35.000 DI LYNK.ID →
+                </a>
+                <small>🔒 Pembayaran diproses melalui Lynk.id</small>
+              </div>
+            </div>
+
+            <div class="crc-payment-step">
+              <div class="crc-payment-step-num">02</div>
+              <div class="crc-payment-step-body">
+                <b>SELESAIKAN PEMBAYARAN</b>
+                <p>Setelah pembayaran berhasil, cek email pembelian lo untuk kode akses.</p>
+              </div>
+            </div>
+
+            <div class="crc-payment-step crc-payment-step-access">
+              <div class="crc-payment-step-num">03</div>
+              <div class="crc-payment-step-body">
+                <b>BALIK KE HALAMAN INI</b>
+                <p>Masukkan kode akses dari email untuk lanjut ke assessment lengkap.</p>
+
+                <div class="crc-access-card">
+                  <div class="crc-access-kicker">SUDAH BAYAR?</div>
+                  <h3>Masukkan kode akses lo.</h3>
+                  <input type="text" id="codeInput" class="lock-input crc-code-input" placeholder="KODE AKSES" maxlength="10" autocomplete="off">
+                  <button class="crc-gold-btn" type="button" onclick="checkCode()">LANJUTKAN ASSESSMENT →</button>
+                  <div id="lockErr" class="lock-err"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="crc-paywall-links">
+            <a href="https://the40resetofficial.com/#experience">← Explore 9 Experiences</a>
+            <a href="https://the40resetofficial.com/">Kembali ke The 40 Reset</a>
+          </div>
+
+          <div class="crc-charity">🎁 10% dari setiap pembelian disalurkan untuk charity / foundation.</div>
+        </div>
       </section>
     </main>
   </div>
@@ -1432,6 +2185,878 @@ function goToMissing(){
   const ids=['m1','m2','m2b','m3','m3b','m4','m5','m6','m7'];
   for(let idx=0;idx<ids.length;idx++){const id=ids[idx];if(skippedModules[id])continue;const{answered,total}=countAnswered(idx);if(answered<total){document.getElementById('errScreen').style.display='none';show(idx);break;}}
 }
+</script>
+
+
+<script id="crc-mockup-v2-script">
+(() => {
+  const CRC_CHECKOUT = "https://lynk.id/the_40_reset/3x7ny5v82p9y/checkout";
+  const CRC_HOME = "https://the40resetofficial.com/";
+  const CRC_EXPERIENCES = "https://the40resetofficial.com/#experience";
+  const PREVIEW_KEY = 't40_crc_preview_v3';
+  const FULL_KEY = 't40_crc_full_v3';
+
+  const previewQuestionSets = {
+    resign: [
+      {
+        q:'Kalau kondisi kerja lo tetap sama 6 bulan lagi, seberapa kuat keinginan lo untuk tetap bertahan?',
+        hint:'Bukan soal benar atau salah. Jawab yang paling menggambarkan kondisi lo sekarang.',
+        labels:['Sangat lemah','Lemah','Netral','Kuat','Sangat kuat'],
+        map:null
+      },
+      {
+        q:'Seberapa fair keputusan dan perlakuan di tempat kerja lo sekarang?',
+        hint:'Pikirkan kesempatan, pengakuan, keputusan atasan, dan perlakuan sehari-hari.',
+        labels:['Sangat nggak fair','Nggak fair','Campur-campur','Cukup fair','Sangat fair'],
+        map:{mid:'m2',qi:0}
+      },
+      {
+        q:'Seberapa aman posisi lo dari tanda-tanda mulai disisihkan atau di-manage out?',
+        hint:'Pikirkan meeting, project, komunikasi atasan, dan perubahan peran.',
+        labels:['Sangat nggak aman','Mulai nggak aman','Belum jelas','Cukup aman','Sangat aman'],
+        map:{mid:'m2b',qi:1}
+      },
+      {
+        q:'Seberapa jarang kerjaan memicu gejala fisik seperti maag, migrain, atau susah tidur?',
+        hint:'Tubuh sering memberi signal sebelum pikiran mau mengakuinya.',
+        labels:['Hampir setiap hari','Sering','Kadang','Jarang','Hampir nggak pernah'],
+        map:{mid:'m3',qi:0}
+      },
+      {
+        q:'Seberapa mudah lo benar-benar lepas dari urusan kerja saat istirahat?',
+        hint:'Nilai kemampuan lo berhenti membawa kantor ke waktu pribadi.',
+        labels:['Nggak bisa lepas','Sulit banget','Kadang bisa','Cukup bisa','Bisa lepas'],
+        map:{mid:'m3b',qi:3}
+      },
+      {
+        q:'Seberapa banyak opsi yang masih kelihatan buat lo sekarang?',
+        hint:'Bukan harus punya jawaban sempurna. Cuma cek apakah jalan lain masih terlihat.',
+        labels:['Sangat stuck','Stuck','Belum jelas','Punya opsi','Opsinya jelas'],
+        map:{mid:'m5',qi:2}
+      },
+      {
+        q:'Seberapa jelas gambaran 90 hari pertama kalau lo benar-benar keluar?',
+        hint:'Bayangkan hari pertama sampai tiga bulan setelah perubahan terjadi.',
+        labels:['Belum ada','Masih kabur','Ada bayangan','Cukup jelas','Sangat jelas'],
+        map:{mid:'m7',qi:0}
+      }
+    ],
+
+    stay: [
+      {
+        q:'Kalau nggak ada perubahan besar, seberapa layak kondisi kerja ini buat lo pertahankan setahun lagi?',
+        hint:'Lihat keseluruhan: kerjaan, atasan, kesempatan, energi, dan hidup di luar kantor.',
+        labels:['Nggak layak','Kurang layak','Belum tahu','Cukup layak','Sangat layak'],
+        map:null
+      },
+      {
+        q:'Seberapa fair keputusan dan perlakuan di tempat kerja lo sekarang?',
+        hint:'Pikirkan kesempatan, pengakuan, keputusan atasan, dan perlakuan sehari-hari.',
+        labels:['Sangat nggak fair','Nggak fair','Campur-campur','Cukup fair','Sangat fair'],
+        map:{mid:'m2',qi:0}
+      },
+      {
+        q:'Seberapa fair kerja keras lo diakui dibanding kontribusi yang lo kasih?',
+        hint:'Bukan cuma pujian. Lihat exposure, kesempatan, reward, dan kepercayaan.',
+        labels:['Nggak fair sama sekali','Kurang fair','Biasa aja','Cukup fair','Sangat fair'],
+        map:{mid:'m2',qi:5}
+      },
+      {
+        q:'Seberapa aman posisi lo dari tanda-tanda mulai disisihkan?',
+        hint:'Meeting, project, akses informasi, komunikasi atasan, dan perubahan peran.',
+        labels:['Sangat nggak aman','Mulai nggak aman','Belum jelas','Cukup aman','Sangat aman'],
+        map:{mid:'m2b',qi:1}
+      },
+      {
+        q:'Seberapa jarang kerjaan memicu gejala fisik seperti maag, migrain, atau susah tidur?',
+        hint:'Kalau badan mulai bayar harga, itu juga bagian dari kondisi kerja.',
+        labels:['Hampir setiap hari','Sering','Kadang','Jarang','Hampir nggak pernah'],
+        map:{mid:'m3',qi:0}
+      },
+      {
+        q:'Seberapa stuck lo merasa di pekerjaan ini sekarang?',
+        hint:'Pikirkan growth, ruang gerak, dan pilihan yang masih terbuka.',
+        labels:['Sangat stuck','Stuck','Belum jelas','Masih berkembang','Sangat berkembang'],
+        map:{mid:'m5',qi:2}
+      },
+      {
+        q:'Kalau situasi berubah mendadak, seberapa siap lo punya alternatif?',
+        hint:'Bukan berarti harus pergi. Ini cuma cek seberapa besar pilihan yang lo punya.',
+        labels:['Belum siap','Kurang siap','Belum tahu','Cukup siap','Sangat siap'],
+        map:{mid:'m7',qi:0}
+      }
+    ],
+
+    risk: [
+      {
+        q:'Seberapa aman posisi lo dari tanda-tanda mulai disisihkan atau di-manage out?',
+        hint:'Pikirkan meeting, project, akses informasi, komunikasi atasan, dan perubahan peran.',
+        labels:['Sangat nggak aman','Mulai nggak aman','Belum jelas','Cukup aman','Sangat aman'],
+        map:{mid:'m2b',qi:1}
+      },
+      {
+        q:'Seberapa sering project penting tiba-tiba dipindah ke orang lain tanpa diskusi?',
+        hint:'Lihat perubahan tanggung jawab yang terjadi tanpa penjelasan.',
+        labels:['Sudah sering','Sudah terjadi','Belum jelas','Jarang','Tidak pernah'],
+        map:{mid:'m2b',qi:2}
+      },
+      {
+        q:'Seberapa sering pola komunikasi atasan berubah dan mulai melibatkan orang lain untuk hal yang dulu langsung ke lo?',
+        hint:'Misalnya CC orang lain, bypass, atau keputusan berjalan tanpa lo.',
+        labels:['Hampir selalu','Sering','Kadang','Jarang','Tidak pernah'],
+        map:{mid:'m2b',qi:3}
+      },
+      {
+        q:'Apakah ada orang baru dengan jobdesk yang mulai mirip banget sama pekerjaan lo?',
+        hint:'Lihat overlap tanggung jawab, akses, atau proses handover yang nggak biasa.',
+        labels:['Sudah sangat jelas','Mulai terlihat','Belum jelas','Hampir nggak ada','Tidak ada'],
+        map:{mid:'m2b',qi:5}
+      },
+      {
+        q:'Seberapa kuat tanda budget tim atau project mulai dipotong?',
+        hint:'Perubahan budget sering jadi signal sebelum perubahan struktur lebih besar.',
+        labels:['Sangat kuat','Mulai terlihat','Belum jelas','Hampir nggak ada','Tidak ada'],
+        map:{mid:'m2b',qi:8}
+      },
+      {
+        q:'Seberapa kuat tanda perusahaan sedang melakukan mapping, restrukturisasi, atau efisiensi?',
+        hint:'Misalnya konsultan masuk, organisasi dipetakan ulang, hiring freeze, atau target berubah tajam.',
+        labels:['Sangat kuat','Mulai terlihat','Belum jelas','Hampir nggak ada','Tidak ada'],
+        map:{mid:'m2b',qi:9}
+      },
+      {
+        q:'Seberapa jauh nama atau kontribusi lo masih masuk dalam planning ke depan?',
+        hint:'Lihat planning, project tahun depan, succession, budget, dan pembagian peran.',
+        labels:['Jelas nggak masuk','Mulai hilang','Belum jelas','Masih dilibatkan','Sangat dilibatkan'],
+        map:{mid:'m2b',qi:10}
+      }
+    ]
+  };
+
+  function currentPreviewQuestions(){
+    return previewQuestionSets[previewState.context] || [];
+  }
+
+  let previewState = loadJSON(PREVIEW_KEY, {index:0,answers:{},completed:false,lastScreen:'opening'});
+  let accessingOnly = false;
+  let restoring = false;
+
+  function loadJSON(key,fallback){
+    try{
+      const raw=localStorage.getItem(key);
+      return raw ? Object.assign({},fallback,JSON.parse(raw)) : fallback;
+    }catch(e){ return fallback; }
+  }
+  function saveJSON(key,val){
+    try{ localStorage.setItem(key,JSON.stringify(val)); }catch(e){}
+  }
+  function showFreeScreen(id){
+    const ids=['freeCover','freeOpening','freeQuestion','freeResult','freePaywall'];
+    ids.forEach(x=>{
+      const el=document.getElementById(x);
+      if(!el)return;
+      // 16P-like flow: when questions are active, keep the 3 context cards visible above them.
+      const active = id==='freeQuestion' ? (x==='freeOpening'||x==='freeQuestion') : x===id;
+      el.classList.toggle('active',active);
+    });
+    previewState.lastScreen=id;
+    saveJSON(PREVIEW_KEY,previewState);
+    if(id!=='freeQuestion') window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  window.openContextChooser=function(){
+    previewState.lastScreen='freeOpening';
+    saveJSON(PREVIEW_KEY,previewState);
+    showFreeScreen('freeOpening');
+  };
+
+  window.selectPreviewContext=function(context){
+    if(!previewQuestionSets[context])return;
+    const changed=previewState.context!==context;
+    previewState.context=context;
+    if(changed){
+      previewState.index=0;
+      previewState.answers={};
+      previewState.completed=false;
+    }
+    document.querySelectorAll('.crc-context-card').forEach(card=>{
+      card.classList.toggle('selected',card.dataset.context===context);
+    });
+    saveJSON(PREVIEW_KEY,previewState);
+    startFreePreview();
+  };
+
+  window.startFreePreview=function(){
+    accessingOnly=false;
+    const qs=currentPreviewQuestions();
+    if(!qs.length){
+      showFreeScreen('freeOpening');
+      return;
+    }
+    const unanswered=qs.findIndex((_,i)=>previewState.answers[i]==null);
+    previewState.index=unanswered===-1 ? Math.min(previewState.index,qs.length-1) : unanswered;
+    showFreeScreen('freeQuestion');
+    renderPreviewQuestion();
+    setTimeout(()=>document.getElementById('freeQuestion')?.scrollIntoView({behavior:'smooth',block:'start'}),80);
+  };
+
+  function renderPreviewQuestion(){
+    const qs=currentPreviewQuestions();
+    if(!qs.length)return;
+    const i=Math.max(0,Math.min(previewState.index,qs.length-1));
+    const p=qs[i];
+    const counter=document.getElementById('previewCounter');
+    const seg=document.getElementById('previewSegments');
+    const text=document.getElementById('previewQuestionText');
+    const hint=document.getElementById('previewQuestionHint');
+    const choices=document.getElementById('previewChoices');
+    if(!counter||!seg||!text||!choices)return;
+    counter.textContent=`PERTANYAAN ${i+1} DARI ${qs.length}`;
+    seg.innerHTML=qs.map((_,j)=>`<span class="${j<i?'done':j===i?'active':''}"></span>`).join('');
+    text.textContent=p.q;
+    hint.textContent=p.hint||'';
+    choices.innerHTML=p.labels.map((label,j)=>{
+      const val=j+1,active=Number(previewState.answers[i])===val?' active':'';
+      return `<button type="button" class="crc-preview-choice${active}" onclick="answerPreview(${val})">
+        <span class="n">${val}</span><span class="label">${label}</span>
+      </button>`;
+    }).join('');
+  }
+
+  window.answerPreview=function(val){
+    const qs=currentPreviewQuestions();
+    const i=previewState.index;
+    previewState.answers[i]=Number(val);
+    saveJSON(PREVIEW_KEY,previewState);
+    renderPreviewQuestion();
+    setTimeout(()=>{
+      if(i<qs.length-1){
+        previewState.index=i+1;
+        saveJSON(PREVIEW_KEY,previewState);
+        renderPreviewQuestion();
+        document.getElementById('freeQuestion')?.scrollIntoView({behavior:'smooth',block:'start'});
+      }else{
+        previewState.completed=true;
+        previewState.lastScreen='freeResult';
+        saveJSON(PREVIEW_KEY,previewState);
+        renderEarlyInsights();
+        showFreeScreen('freeResult');
+      }
+    },220);
+  };
+
+  window.previewBack=function(){
+    if(previewState.index<=0){
+      showFreeScreen('freeOpening');
+      return;
+    }
+    previewState.index--;
+    saveJSON(PREVIEW_KEY,previewState);
+    renderPreviewQuestion();
+    document.getElementById('freeQuestion')?.scrollIntoView({behavior:'smooth',block:'start'});
+  };
+
+  window.returnToPreview=function(){
+    const qs=currentPreviewQuestions();
+    if(!qs.length){showFreeScreen('freeOpening');return;}
+    previewState.index=qs.length-1;
+    previewState.lastScreen='freeQuestion';
+    saveJSON(PREVIEW_KEY,previewState);
+    showFreeScreen('freeQuestion');
+    renderPreviewQuestion();
+    setTimeout(()=>document.getElementById('freeQuestion')?.scrollIntoView({behavior:'smooth',block:'start'}),80);
+  };
+
+  window.returnToContext=function(){
+    previewState.completed=false;
+    previewState.lastScreen='freeOpening';
+    saveJSON(PREVIEW_KEY,previewState);
+    showFreeScreen('freeOpening');
+    document.querySelectorAll('.crc-context-card').forEach(card=>{
+      card.classList.toggle('selected',card.dataset.context===previewState.context);
+    });
+  };
+
+  function classifyLowGood(v,labels){
+    if(v<=2)return labels[0];
+    if(v===3)return labels[1];
+    return labels[2];
+  }
+
+  function renderEarlyInsights(){
+    const a=previewState.answers;
+    const ctx=previewState.context||'stay';
+    const el=document.getElementById('earlyInsightCards');
+    if(!el)return;
+
+    const tier=(v,bad='PERLU DIPANTAU',mid='BELUM JELAS',good='RELATIF AMAN') =>
+      Number(v||3)<=2?bad:Number(v||3)===3?mid:good;
+
+    if(ctx==='risk'){
+      const position=tier(a[0],'RISIKO TINGGI','PERLU DIPANTAU','RELATIF AMAN');
+      const exclusion=([a[1],a[2],a[3]].map(x=>Number(x||3)).reduce((x,y)=>x+y,0)/3);
+      const company=([a[4],a[5]].map(x=>Number(x||3)).reduce((x,y)=>x+y,0)/2);
+      const future=Number(a[6]||3);
+
+      el.innerHTML=`
+        <div class="crc-early-card"><div class="crc-early-icon">◎</div><div><small>Keamanan posisi</small><b>${position}</b><p>Preview membaca apakah posisi lo mulai kehilangan akses, peran, atau visibility.</p></div></div>
+        <div class="crc-early-card"><div class="crc-early-icon">↘</div><div><small>Signal disisihkan</small><b>${exclusion<=2?'MULAI KUAT':exclusion<4?'PERLU DIPANTAU':'BELUM DOMINAN'}</b><p>Perubahan project, komunikasi, dan overlap role bisa menjadi pola kalau terjadi berulang.</p></div></div>
+        <div class="crc-early-card"><div class="crc-early-icon">⚠</div><div><small>Signal perusahaan</small><b>${company<=2?'MULAI KUAT':company<4?'PERLU DIPANTAU':'BELUM DOMINAN'}</b><p>Budget, mapping organisasi, dan efisiensi perlu dibaca sebagai satu rangkaian, bukan kejadian terpisah.</p></div></div>
+        <div class="crc-early-card"><div class="crc-early-icon">⌖</div><div><small>Posisi di planning ke depan</small><b>${future<=2?'MULAI HILANG':future===3?'BELUM JELAS':'MASIH TERLIBAT'}</b><p>Seberapa jauh lo masih masuk ke rencana berikutnya memberi konteks penting terhadap signal lain.</p></div></div>
+        <div class="crc-early-card"><div class="crc-early-icon">▣</div><div><small>Kesiapan finansial</small><b>BELUM TERBACA</b><p>Bagian ini baru dihitung di assessment lengkap.</p></div></div>
+      `;
+      return;
+    }
+
+    const first=Number(a[0]||3);
+    const fairness=Number(a[1]||3);
+    const position=ctx==='stay'?Number(a[3]||3):Number(a[2]||3);
+    const pressure=ctx==='stay'?Number(a[4]||3):(Number(a[3]||3)+Number(a[4]||3))/2;
+    const direction=Number(a[6]||3);
+
+    const firstLabel = ctx==='resign'
+      ? (first<=2?'DORONGAN BERGERAK KUAT':first===3?'MASIH MENIMBANG':'MASIH MAU BERTAHAN')
+      : (first<=2?'MULAI NGGAK WORTH IT':first===3?'BELUM JELAS':'MASIH LAYAK');
+
+    el.innerHTML=`
+      <div class="crc-early-card"><div class="crc-early-icon">◇</div><div><small>${ctx==='resign'?'Kondisi bertahan':'Nilai kondisi kerja'}</small><b>${firstLabel}</b><p>${ctx==='resign'?'Ini belum berarti lo harus resign. Ini cuma menunjukkan seberapa kuat kondisi sekarang masih bisa lo jalani.':'Preview awal membaca apakah kondisi sekarang masih memberi cukup alasan untuk dipertahankan.'}</p></div></div>
+      <div class="crc-early-card"><div class="crc-early-icon">⚖</div><div><small>Fairness</small><b>${fairness<=2?'MULAI NGGAK FAIR':fairness===3?'BELUM JELAS':'CUKUP FAIR'}</b><p>Perlakuan dan keputusan yang fair adalah salah satu signal penting kualitas kondisi kerja.</p></div></div>
+      <div class="crc-early-card"><div class="crc-early-icon">◎</div><div><small>Keamanan posisi</small><b>${position<=2?'PERLU DIPANTAU':position===3?'BELUM JELAS':'RELATIF AMAN'}</b><p>Belum tentu ada masalah, tapi perubahan akses, project, dan komunikasi perlu dibaca sebagai pola.</p></div></div>
+      <div class="crc-early-card"><div class="crc-early-icon">ϟ</div><div><small>Tekanan kerja</small><b>${pressure<=2?'SUDAH TERASA':pressure<4?'MULAI TERLIHAT':'MASIH TERKENDALI'}</b><p>Kalau kerja mulai ikut masuk ke badan dan waktu pribadi, itu bukan signal yang perlu diabaikan.</p></div></div>
+      <div class="crc-early-card"><div class="crc-early-icon">⌖</div><div><small>Kejelasan alternatif</small><b>${direction<=2?'MASIH KABUR':direction===3?'MULAI ADA':'CUKUP JELAS'}</b><p>Punya pilihan membuat lo bisa membaca kondisi tanpa merasa terjebak.</p></div></div>
+      <div class="crc-early-card"><div class="crc-early-icon">▣</div><div><small>Kesiapan finansial</small><b>BELUM TERBACA</b><p>Bagian ini baru dihitung di assessment lengkap.</p></div></div>
+    `;
+  }
+
+  window.showPaywall=function(accessOnly){
+    accessingOnly=!!accessOnly;
+    if(!accessingOnly){
+      previewState.completed=true;
+      previewState.lastScreen='freePaywall';
+      saveJSON(PREVIEW_KEY,previewState);
+    }
+    showFreeScreen('freePaywall');
+    setTimeout(()=>document.getElementById('codeInput')?.focus(),250);
+  };
+
+  window.backFromPaywall=function(){
+    if(accessingOnly && !previewState.completed) showFreeScreen('freeCover');
+    else if(previewState.completed){renderEarlyInsights();showFreeScreen('freeResult');}
+    else showFreeScreen('freeOpening');
+  };
+
+  window.saveBeforeCheckout=function(){
+    previewState.lastScreen='freePaywall';
+    previewState.checkoutClickedAt=Date.now();
+    saveJSON(PREVIEW_KEY,previewState);
+    saveFullState();
+  };
+
+  function setPreviewHero(){
+    const el=document.getElementById('previewHero');
+    try{
+      if(el && typeof IMG!=='undefined' && IMG.opening) el.style.backgroundImage=`url("${IMG.opening}")`;
+    }catch(e){}
+  }
+
+  // -----------------------------
+  // FULL ASSESSMENT PERSISTENCE
+  // -----------------------------
+  function collectAnswers(){
+    const answers={};
+    if(typeof M!=='undefined'){
+      M.forEach(m=>{
+        if(!m.qs)return;
+        m.qs.forEach((q,qi)=>{
+          for(let n=1;n<=5;n++){
+            const b=document.getElementById(`${m.id}-${qi}-${n}`);
+            if(b?.classList.contains('active')){answers[`${m.id}-${qi}`]=n;break;}
+          }
+        });
+      });
+    }
+    return answers;
+  }
+
+  function saveFullState(){
+    if(restoring)return;
+    try{
+      const state={
+        mode:typeof assessmentMode!=='undefined'?assessmentMode:'reset',
+        cur:typeof cur!=='undefined'?cur:-1,
+        answers:collectAnswers(),
+        fin:typeof finD!=='undefined'?{...finD}:{},
+        skipped:typeof skippedModules!=='undefined'?{...skippedModules}:{},
+        irrelevant:typeof irrelevantQs!=='undefined'?{...irrelevantQs}:{},
+        savedAt:Date.now()
+      };
+      saveJSON(FULL_KEY,state);
+    }catch(e){}
+  }
+  window.addEventListener('pagehide',saveFullState);
+  window.addEventListener('beforeunload',saveFullState);
+
+  function applyAnswer(mid,qi,val){
+    const b=document.getElementById(`${mid}-${qi}-${val}`);
+    if(!b)return;
+    [1,2,3,4,5].forEach(n=>document.getElementById(`${mid}-${qi}-${n}`)?.classList.remove('active'));
+    b.classList.add('active');
+    if(typeof calcScore==='function')calcScore(mid);
+  }
+
+  function restoreSavedState(){
+    const full=loadJSON(FULL_KEY,{answers:{},fin:{},skipped:{},irrelevant:{},cur:-1});
+    restoring=true;
+    try{
+      // Apply paid/full answers first.
+      Object.entries(full.answers||{}).forEach(([key,val])=>{
+        const parts=key.split('-'),qi=Number(parts.pop()),mid=parts.join('-');
+        applyAnswer(mid,qi,Number(val));
+      });
+
+      // Reuse mapped preview answers only when there isn't already a full answer.
+      currentPreviewQuestions().forEach((p,i)=>{
+        if(!p.map || previewState.answers[i]==null)return;
+        const key=`${p.map.mid}-${p.map.qi}`;
+        if((full.answers||{})[key]==null) applyAnswer(p.map.mid,p.map.qi,Number(previewState.answers[i]));
+      });
+
+      // Restore finance.
+      if(typeof finD!=='undefined'){
+        Object.keys(finD).forEach(k=>{
+          const v=Number((full.fin||{})[k]||0);
+          finD[k]=v;
+          const input=document.querySelector(`[name="fin-${k}"]`);
+          if(input)input.value=v>0?v.toLocaleString('id-ID'):'';
+        });
+        refreshFinanceVisual();
+      }
+
+      // Restore irrelevant answers.
+      if(typeof irrelevantQs!=='undefined'){
+        Object.entries(full.irrelevant||{}).forEach(([key,val])=>{if(val)irrelevantQs[key]=true;});
+        Object.keys(irrelevantQs).forEach(key=>{
+          if(!irrelevantQs[key])return;
+          const [mid,qiRaw]=[key.substring(0,key.lastIndexOf('-')),key.substring(key.lastIndexOf('-')+1)];
+          const qi=Number(qiRaw);
+          document.getElementById(`irr-${mid}-${qi}`)?.classList.add('active');
+          [1,2,3,4,5].forEach(n=>{
+            const b=document.getElementById(`${mid}-${qi}-${n}`);
+            if(b){b.disabled=true;b.style.opacity='.4';}
+          });
+        });
+      }
+
+      // Restore skipped modules.
+      if(typeof skippedModules!=='undefined'){
+        Object.entries(full.skipped||{}).forEach(([id,val])=>{
+          if(!val)return;
+          skippedModules[id]=true;
+          scores[id]='SKIP';
+          const idx=M.findIndex(x=>x.id===id);
+          document.getElementById(`modContent-${idx}`)?.style.setProperty('display','none');
+          const btn=document.getElementById(`skipBtn-${idx}`);
+          if(btn){btn.textContent='✓ Modul Dilewati — Tidak Dihitung';btn.classList.add('skipped');}
+        });
+      }
+      if(full.mode)assessmentMode=full.mode;
+    }finally{restoring=false;}
+  }
+
+  function refreshFinanceVisual(){
+    if(typeof finD==='undefined')return;
+    const aset=finD.tabungan+finD.deposito+finD.darurat+finD.emas+finD.pesangon;
+    const burn=finD.pokok+finD.kpr+finD.kendaraan+finD.pendidikan+finD.bpjs+finD.transport+finD.komunikasi+finD.kesehatan+finD.anak+finD.gaya+finD.buffer;
+    const fmt=n=>'Rp '+Number(n||0).toLocaleString('id-ID');
+    document.getElementById('fA')&&(document.getElementById('fA').textContent=fmt(aset));
+    document.getElementById('fB')&&(document.getElementById('fB').textContent=fmt(burn));
+    const r=document.getElementById('fR');
+    if(aset>0&&burn>0){
+      const mo=Math.floor(aset/burn);
+      if(r){r.textContent=mo+' bulan';r.className='fr-val pegangan-uang-big '+(mo>=12?'green':mo>=6?'yellow':'red');}
+      scores['m1']=mo>=12?100:mo>=6?70:mo>=3?40:15;
+    }else{if(r){r.textContent='—';r.className='fr-val pegangan-uang-big';}delete scores['m1'];}
+  }
+
+  // -----------------------------
+  // OVERRIDE LOCK / UNLOCK
+  // -----------------------------
+  window.checkCode=function(){
+    const inp=document.getElementById('codeInput');
+    const err=document.getElementById('lockErr');
+    if(!inp)return;
+    const v=inp.value.toUpperCase().trim().replace(/[^A-Z0-9]/g,'');
+    if(typeof CODES!=='undefined' && CODES.includes(v)){
+      if(err)err.textContent='';
+      document.body.classList.add('crc-paid-mode');
+      const lockEl=document.getElementById('lock');
+      if(lockEl){
+        lockEl.classList.add('crc-hidden');
+        lockEl.style.setProperty('display','none','important');
+      }
+      document.getElementById('app').style.display='block';
+      build();
+      document.getElementById('cover').style.display='none';
+
+      const full=loadJSON(FULL_KEY,{cur:-1,mode:null});
+      const contextMode=previewState.context==='risk'?'forced':'reset';
+      assessmentMode=full.mode||contextMode;
+      const modeEl=document.getElementById('modeScreen');
+      modeEl?.classList.remove('active');
+
+      const resumeIndex=Number(full.cur);
+      if(Number.isFinite(resumeIndex) && resumeIndex>=0){
+        show(Math.max(0,Math.min(resumeIndex,M.length-1)));
+      }else{
+        show(0);
+      }
+      window.scrollTo({top:0,behavior:'auto'});
+    }else{
+      inp.classList.add('err');
+      if(err)err.textContent='Kode salah. Cek email pembelian kamu.';
+      setTimeout(()=>inp.classList.remove('err'),400);
+    }
+  };
+
+  // -----------------------------
+  // OVERRIDE BUILD: one question per screen, same data/scoring.
+  // -----------------------------
+  function parseChoiceLabels(q){
+    const h=(q?.h||'').replace(/<[^>]+>/g,'');
+    const m=h.match(/1\s*=\s*([^·]+).*5\s*=\s*(.+)$/i);
+    if(m){
+      const a=m[1].trim(),b=m[2].trim();
+      return [a,`Cenderung ${a.toLowerCase()}`,'Di tengah',`Cenderung ${b.toLowerCase()}`,b];
+    }
+    return ['Sangat rendah','Rendah','Netral','Tinggi','Sangat tinggi'];
+  }
+
+  window.build=function(){
+    const top=document.querySelector('#app .topbar');
+    if(top)top.innerHTML=`<div class="topbar-brand"><a href="${CRC_HOME}">← THE 40 RESET</a></div><div class="progress-wrap" id="dots"></div>`;
+    document.getElementById('dots').innerHTML=M.map((_,i)=>`<div class="pdot" id="d${i}"></div>`).join('')+`<div class="pdot" id="d${M.length}"></div>`;
+    document.getElementById('mods').innerHTML=M.map((m,i)=>buildMod(m,i)).join('');
+    buildModeScreen();
+    restoreSavedState();
+  };
+
+  window.buildMod=function(m,i){
+    const skipBanner=m.skippable?`<div class="skip-banner" id="skipBanner-${i}"><p>${m.skipLabel}</p><button class="skip-btn" id="skipBtn-${i}" onclick="toggleSkipModule(${i})">⏭ Skip Modul Ini</button></div>`:'';
+    if(m.type==='fin'){
+      return `<div class="mod" id="m${i}">
+        <div class="crc-module-head"><div class="mod-tag">${m.tag}</div><h2 class="crc-module-title">${m.title}</h2><div class="crc-module-sub">Isi kondisi finansial sebenarnya. Semua angka tetap diproses di browser ini.</div></div>
+        ${skipBanner}
+        <div id="modContent-${i}" class="crc-fin-wrap">${buildFin()}
+          <button class="crc-gold-btn crc-fin-next" type="button" onclick="nextFromFinance(${i})">LANJUT →</button>
+        </div>
+      </div>`;
+    }
+    return `<div class="mod" id="m${i}">
+      <div class="crc-module-head"><div class="mod-tag">${m.tag}</div><h2 class="crc-module-title">${m.title}</h2><div class="crc-module-sub">Satu pertanyaan setiap layar. Jawaban otomatis tersimpan di browser ini.</div></div>
+      ${skipBanner}
+      <div id="modContent-${i}">${buildQs(m,i)}</div>
+    </div>`;
+  };
+
+  window.buildQs=function(m,i){
+    return m.qs.map((q,qi)=>{
+      const labels=parseChoiceLabels(q);
+      const hasIrrelevant=m.id==='m2b';
+      return `<div class="q crc-q" id="q-${m.id}-${qi}" data-mod="${i}" data-qi="${qi}">
+        <div class="crc-q-progress-label" id="qlabel-${m.id}-${qi}"></div>
+        <div class="crc-q-progress"><span id="qbar-${m.id}-${qi}"></span></div>
+        <div class="q-text">${q.q}</div>
+        <div class="q-hint">${q.h}</div>
+        <div class="q-scale">
+          ${[1,2,3,4,5].map(n=>`<button class="sq" type="button" id="${m.id}-${qi}-${n}" onclick="pick('${m.id}',${qi},${n})"><span class="crc-choice-number">${n}</span><span>${labels[n-1]}</span></button>`).join('')}
+          ${hasIrrelevant?`<button class="btn-irrelevant" type="button" id="irr-${m.id}-${qi}" onclick="toggleIrrelevant('${m.id}',${qi})">Tidak Relevan</button>`:''}
+        </div>
+        <div class="crc-q-nav">
+          <button class="crc-q-back" type="button" onclick="prevFullQuestion(${i},${qi})">←</button>
+          <button class="crc-q-next" type="button" onclick="nextFullQuestion(${i},${qi})">${qi===m.qs.length-1?(i===M.length-1?'LIHAT HASIL →':'LANJUT MODUL →'):'LANJUT →'}</button>
+        </div>
+      </div>`;
+    }).join('');
+  };
+
+  function globalQuestionMeta(modIndex,qi){
+    let total=1; // finance counts as one assessment step
+    M.forEach(m=>{if(m.qs)total+=m.qs.length;});
+    let current=1;
+    if(modIndex===0)return{current:1,total};
+    current=2;
+    for(let i=1;i<modIndex;i++)current+=(M[i].qs||[]).length;
+    current+=qi;
+    return{current,total};
+  }
+
+  function firstUnansweredQi(m){
+    if(!m.qs)return 0;
+    for(let qi=0;qi<m.qs.length;qi++){
+      const key=`${m.id}-${qi}`;
+      if(irrelevantQs[key])continue;
+      let done=false;
+      for(let n=1;n<=5;n++)if(document.getElementById(`${m.id}-${qi}-${n}`)?.classList.contains('active'))done=true;
+      if(!done)return qi;
+    }
+    return Math.max(0,m.qs.length-1);
+  }
+
+  function activateFullQuestion(modIndex,qi){
+    const m=M[modIndex];if(!m?.qs)return;
+    qi=Math.max(0,Math.min(qi,m.qs.length-1));
+    document.querySelectorAll(`#m${modIndex} .crc-q`).forEach(x=>x.classList.remove('q-current'));
+    const q=document.getElementById(`q-${m.id}-${qi}`);
+    q?.classList.add('q-current');
+    const meta=globalQuestionMeta(modIndex,qi);
+    const label=document.getElementById(`qlabel-${m.id}-${qi}`);
+    const bar=document.getElementById(`qbar-${m.id}-${qi}`);
+    if(label)label.textContent=`PERTANYAAN ${meta.current} DARI ${meta.total}`;
+    if(bar)bar.style.width=`${Math.round((meta.current/meta.total)*100)}%`;
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  window.show=function(i){
+    document.body.classList.remove('dashboard-active');
+    document.querySelectorAll('.mod').forEach(m=>m.classList.remove('active'));
+    document.getElementById('dash').classList.remove('active');
+    document.getElementById('moduleInsight')?.classList.remove('active');
+    document.getElementById('errScreen').style.display='none';
+    const mod=document.getElementById(`m${i}`);if(!mod)return;
+    mod.classList.add('active');cur=i;updateDots(i);applyForcedCopyToActiveModule();
+    if(M[i].qs)activateFullQuestion(i,firstUnansweredQi(M[i]));
+    saveFullState();
+  };
+
+  window.nextFromFinance=function(i){
+    const c=countAnswered(i);
+    if(c.answered<c.total){showModErr(i,1);return;}
+    saveFullState();
+    if(i<M.length-1)show(i+1); else showDash();
+  };
+
+  window.pick=function(mid,qi,v){
+    const key=`${mid}-${qi}`;if(irrelevantQs[key])return;
+    [1,2,3,4,5].forEach(n=>document.getElementById(`${mid}-${qi}-${n}`)?.classList.toggle('active',n===v));
+    calcScore(mid);saveFullState();
+  };
+
+  window.nextFullQuestion=function(modIndex,qi){
+    const m=M[modIndex],key=`${m.id}-${qi}`;
+    let answered=!!irrelevantQs[key];
+    for(let n=1;n<=5;n++)if(document.getElementById(`${m.id}-${qi}-${n}`)?.classList.contains('active'))answered=true;
+    if(!answered){showModErr(modIndex,1);return;}
+    saveFullState();
+    if(qi<m.qs.length-1)activateFullQuestion(modIndex,qi+1);
+    else if(modIndex<M.length-1)show(modIndex+1);
+    else showDash();
+  };
+
+  window.prevFullQuestion=function(modIndex,qi){
+    if(qi>0){activateFullQuestion(modIndex,qi-1);return;}
+    if(modIndex>0){
+      const prev=M[modIndex-1];
+      show(modIndex-1);
+      if(prev.qs)activateFullQuestion(modIndex-1,prev.qs.length-1);
+    }else{
+      document.querySelectorAll('.mod').forEach(m=>m.classList.remove('active'));
+      document.getElementById('modeScreen')?.classList.add('active');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+  };
+
+  const _origUpFin=window.upFin || upFin;
+  window.upFin=function(k,v){
+    finD[k]=v||0;refreshFinanceVisual();saveFullState();
+  };
+
+  const _origToggleIrrelevant=window.toggleIrrelevant || toggleIrrelevant;
+  window.toggleIrrelevant=function(mid,qi){
+    const key=`${mid}-${qi}`,btn=document.getElementById(`irr-${mid}-${qi}`),qEl=document.getElementById(`q-${mid}-${qi}`);
+    if(irrelevantQs[key]){
+      irrelevantQs[key]=false;btn?.classList.remove('active');if(qEl)qEl.style.opacity='1';
+      [1,2,3,4,5].forEach(n=>{const b=document.getElementById(`${mid}-${qi}-${n}`);if(b){b.disabled=false;b.style.opacity='1';}});
+    }else{
+      irrelevantQs[key]=true;btn?.classList.add('active');
+      [1,2,3,4,5].forEach(n=>{const b=document.getElementById(`${mid}-${qi}-${n}`);if(b){b.classList.remove('active');b.disabled=true;b.style.opacity='.4';}});
+      calcScore(mid);
+    }
+    saveFullState();
+  };
+
+  window.toggleSkipModule=function(i){
+    const m=M[i],btn=document.getElementById(`skipBtn-${i}`),content=document.getElementById(`modContent-${i}`);
+    if(skippedModules[m.id]){
+      skippedModules[m.id]=false;
+      if(btn){btn.textContent='⏭ Skip Modul Ini';btn.classList.remove('skipped');}
+      if(content)content.style.display='block';
+      delete scores[m.id];
+    }else{
+      skippedModules[m.id]=true;
+      if(btn){btn.textContent='✓ Modul Dilewati — Tidak Dihitung';btn.classList.add('skipped');}
+      if(content)content.style.display='none';
+      scores[m.id]='SKIP';
+      saveFullState();
+      setTimeout(()=>{if(i<M.length-1)show(i+1);else showDash();},180);
+      return;
+    }
+    saveFullState();
+  };
+
+  window.chooseMode=function(mode){
+    assessmentMode=mode;saveFullState();
+    document.getElementById('modeScreen')?.classList.remove('active');
+    show(0);
+  };
+
+  // -----------------------------
+  // SIMPLE RESULT, SAME SCORING
+  // -----------------------------
+  function resultAverage(){
+    const ids=['m1','m2','m2b','m3','m3b','m4','m5','m6','m7'];
+    const filled=ids.filter(id=>scores[id]!==undefined&&scores[id]!=='SKIP'&&!skippedModules[id]);
+    const finScore=scores['m1']||0;
+    let weightedSum=0,weightedCount=0;
+    filled.forEach(id=>{const w=id==='m1'?2:1;weightedSum+=(scores[id]||0)*w;weightedCount+=w;});
+    let avg=weightedCount?Math.round(weightedSum/weightedCount):0;
+    if(finScore<40)avg=Math.min(avg,55);else if(finScore<70)avg=Math.min(avg,75);
+    return{avg,filled,ids};
+  }
+
+  function resultStatus(avg){
+    if(avg>=80)return{label:'READY',copy:'Fondasi utama lo terlihat cukup kuat. Tetap baca tiap area sebelum membuat keputusan besar.'};
+    if(avg>=60)return{label:'FAIR',copy:'Lo punya potensi untuk mulai menyusun langkah, tapi beberapa area masih perlu diperkuat.'};
+    if(avg>=40)return{label:'NEED ATTENTION',copy:'Ada beberapa area yang perlu dibereskan sebelum perubahan besar terasa aman untuk dijalani.'};
+    return{label:'HIGH RISK',copy:'Terlalu banyak fondasi yang masih rentan. Fokus dulu ke area paling mendesak sebelum mengambil langkah besar.'};
+  }
+
+  const resultLabels={
+    m1:'Finansial',m2:'Toxic Environment',m2b:'Manage Out / Layoff',m3:'Health',
+    m3b:'Stress & Habits',m4:'Family & Support',m5:'Mental',m6:'Identity',m7:'Plan'
+  };
+  const nextCopy={
+    m1:['Perkuat Pegangan Finansial','Targetkan runway yang realistis sebelum perubahan besar.'],
+    m2:['Baca Pola Lingkungan Kerja','Pisahkan kejadian sesaat dari pola yang terus berulang.'],
+    m2b:['Siapkan Plan B Sekarang','Update CV, jaringan, dan opsi sebelum situasi memaksa lo bergerak.'],
+    m3:['Pulihkan Kondisi Fisik','Jangan normalisasi signal tubuh yang terus muncul karena kerja.'],
+    m3b:['Turunkan Tekanan Harian','Rapikan tidur, jeda, dan kebiasaan yang muncul saat stress.'],
+    m4:['Buka Percakapan dengan Support System','Pastikan orang terdekat tahu risiko dan kondisi sebenarnya.'],
+    m5:['Jernihkan Keputusan','Jangan ambil keputusan permanen saat pikiran sedang penuh.'],
+    m6:['Bangun Identitas di Luar Kerja','Pastikan nilai diri lo nggak berhenti di jabatan sekarang.'],
+    m7:['Buat Peta 30–90 Hari','Tentukan langkah konkret setelah perubahan terjadi.']
+  };
+
+  window.toggleResultInsights=function(){
+    document.getElementById('crcInsightPanel')?.classList.toggle('open');
+  };
+
+  window.shareCRCResult=async function(){
+    const text='Gue baru selesai Career Reality Check™ dari The 40 Reset.';
+    try{
+      if(navigator.share)await navigator.share({title:'Career Reality Check™',text,url:CRC_HOME});
+      else{await navigator.clipboard.writeText(CRC_HOME);alert('Link The 40 Reset sudah disalin.');}
+    }catch(e){}
+  };
+
+  window.showDash=function(){
+    document.body.classList.add('dashboard-active');
+    const missing=[];
+    M.forEach((m,i)=>{if(skippedModules[m.id])return;const c=countAnswered(i);if(c.answered<c.total)missing.push(i);});
+    if(missing.length){
+      document.getElementById('errScreen').style.cssText='display:flex;min-height:100vh;align-items:center;justify-content:center;padding:2rem;flex-direction:column;text-align:center';
+      document.getElementById('errScreen').innerHTML=`<div style="max-width:400px"><h2 style="color:#fff;margin-bottom:8px">Belum selesai.</h2><p style="color:#aab1b7;font-size:12px;margin-bottom:15px">Masih ada bagian yang belum lengkap.</p><button class="crc-gold-btn" onclick="show(${missing[0]})">LANJUT ISI →</button></div>`;
+      document.querySelectorAll('.mod').forEach(x=>x.classList.remove('active'));
+      return;
+    }
+
+    document.querySelectorAll('.mod').forEach(x=>x.classList.remove('active'));
+    document.getElementById('modeScreen')?.classList.remove('active');
+    document.getElementById('moduleInsight')?.classList.remove('active');
+    document.getElementById('errScreen').style.display='none';
+
+    const dash=document.getElementById('dash');
+    dash.classList.add('active');
+    const {avg,filled,ids}=resultAverage();
+    const st=resultStatus(avg);
+
+    const areaRows=ids.map(id=>{
+      if(skippedModules[id])return `<div class="crc-area-row"><div class="crc-area-name">${resultLabels[id]}</div><div class="crc-bar"><span style="width:0%"></span></div><div class="crc-area-score">SKIP</div></div>`;
+      const s=Math.max(0,Math.min(100,Number(scores[id]||0)));
+      return `<div class="crc-area-row"><div class="crc-area-name">${resultLabels[id]}</div><div class="crc-bar"><span style="width:${s}%"></span></div><div class="crc-area-score">${s}</div></div>`;
+    }).join('');
+
+    const detailRows=ids.filter(id=>!skippedModules[id]).map(id=>{
+      const sig=getModuleSignal(id,Number(scores[id]||0));
+      return `<div class="crc-insight-row"><b>${resultLabels[id]} · ${sig.label}</b><span>${sig.category} — skor ${Number(scores[id]||0)}/100.</span></div>`;
+    }).join('');
+
+    const priorityIds=filled.slice().sort((a,b)=>(Number(scores[a]||0)-Number(scores[b]||0))).slice(0,3);
+    const priorities=priorityIds.map((id,i)=>{
+      const c=nextCopy[id]||['Perkuat Area Ini','Fokus ke area yang paling lemah dulu.'];
+      return `<div class="crc-next-row"><div class="crc-next-num">${i+1}</div><div><b>${c[0]}</b><p>${c[1]}</p></div></div>`;
+    }).join('');
+
+    dash.innerHTML=`
+      <div class="crc-result-topbar"><a href="${CRC_HOME}">← THE 40 RESET</a><span>HASIL LENGKAP</span></div>
+
+      <section class="crc-result-card">
+        <div class="crc-result-label">READINESS SCORE LO</div>
+        <div class="crc-score-line"><div class="crc-score-num">${avg}</div><div class="crc-score-den">/100</div></div>
+        <div class="crc-score-status">${st.label}</div>
+        <div class="crc-result-copy">${st.copy}</div>
+      </section>
+
+      <section class="crc-result-card">
+        <div class="crc-area-title">RINGKASAN 9 AREA</div>
+        ${areaRows}
+        <button class="crc-result-btn" type="button" onclick="toggleResultInsights()">LIHAT INSIGHT LENGKAP →</button>
+        <div id="crcInsightPanel" class="crc-insight-panel">${detailRows}</div>
+      </section>
+
+      <section class="crc-result-card">
+        <h2 class="crc-next-title">LANGKAH BERIKUTNYA<br>UNTUK LO</h2>
+        ${priorities}
+        <div class="crc-final-note">Perjalanan lo nggak berhenti di sini. Terus update kondisi, lihat polanya, dan ambil keputusan dengan fondasi yang lebih jelas.</div>
+        <div class="crc-dual-cta">
+          <button class="crc-result-btn" type="button" onclick="window.location.href='${CRC_EXPERIENCES}'">EXPLORE 9 EXPERIENCES →</button>
+          <button class="crc-secondary-btn" type="button" onclick="shareCRCResult()">SHARE HASIL LO</button>
+        </div>
+        <div class="crc-footer-links">
+          <a href="${CRC_HOME}">← Kembali ke Website</a>
+          <a href="${CRC_EXPERIENCES}">Explore Experiences →</a>
+        </div>
+      </section>
+    `;
+    updateDots(M.length);
+    saveFullState();
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+
+  // Initialize preview page after IMG has been defined by the original script.
+  document.addEventListener('DOMContentLoaded',()=>{
+    setPreviewHero();
+    document.body.classList.remove('crc-paid-mode');
+    const lockEl=document.getElementById('lock');
+    if(lockEl){
+      lockEl.classList.remove('crc-hidden');
+      lockEl.style.removeProperty('display');
+      lockEl.style.removeProperty('visibility');
+      lockEl.style.removeProperty('height');
+      lockEl.style.removeProperty('min-height');
+      lockEl.style.removeProperty('overflow');
+    }
+    const appEl=document.getElementById('app');
+    if(appEl)appEl.style.display='none';
+
+    document.querySelectorAll('.crc-context-card').forEach(card=>{
+      card.classList.toggle('selected',card.dataset.context===previewState.context);
+    });
+
+    // ALWAYS start from cinematic cover on page load.
+    // Saved answers remain available when the user continues.
+    showFreeScreen('freeCover');
+  });
+})();
 </script>
 
 </body>
