@@ -2894,7 +2894,12 @@ function goToMissing(){
       saveJSON(PREVIEW_KEY,previewState);
     }
     showFreeScreen('freePaywall');
-    setTimeout(()=>document.getElementById('codeInput')?.focus(),250);
+
+    // Hanya shortcut "Sudah membeli?" yang langsung menuju input kode.
+    // CTA utama "BUKA ASSESSMENT LENGKAP" harus tetap mulai dari atas paywall.
+    if(accessingOnly){
+      setTimeout(()=>document.getElementById('codeInput')?.focus(),250);
+    }
   };
 
   window.backFromPaywall=function(){
