@@ -1158,6 +1158,38 @@ body.crc-paid-mode #lock.crc-flow{
 }
 </style>
 
+
+<style id="crc-clean-flow-patch">
+/* Clean conversion flow patch */
+.crc-area-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:14px 0 18px;
+}
+.crc-area-chips span{
+  display:inline-flex;
+  align-items:center;
+  min-height:31px;
+  padding:7px 10px;
+  border:1px solid rgba(247,184,45,.22);
+  border-radius:999px;
+  background:rgba(247,184,45,.055);
+  color:#d8c89f;
+  font-size:9px;
+  font-weight:900;
+  line-height:1.2;
+}
+#freeOpening .crc-simple-head h1{
+  line-height:.95;
+  letter-spacing:-.045em;
+}
+@media(max-width:620px){
+  .crc-area-chips{gap:6px}
+  .crc-area-chips span{font-size:8.5px;padding:7px 9px}
+}
+</style>
+
 </head>
 <body>
 
@@ -1180,7 +1212,7 @@ body.crc-paid-mode #lock.crc-flow{
           <div class="crc-opening-content">
             <div class="crc-pill">CAREER REALITY CHECK™</div>
             <h1>SEBENARNYA,<br><em>KONDISI KERJA LO</em><br>LAGI ADA<br>DI MANA?</h1>
-            <p>Kadang kita tahu ada yang nggak beres di pekerjaan. Tapi belum tentu tahu masalah utamanya ada di mana.</p>
+            <p>Mulai dari 7 pertanyaan gratis untuk baca pola awal kondisi kerja lo — sebelum ambil keputusan besar.</p>
 
             <div class="crc-preview-meta">
               <span>◉ 7 pertanyaan gratis</span>
@@ -1195,110 +1227,13 @@ body.crc-paid-mode #lock.crc-flow{
           </div>
         </div>
 
-        <div class="crc-landing-body">
-          <section class="crc-intro-section">
-            <div class="crc-intro-kicker">INTRODUCTION</div>
-            <h2 class="crc-intro-title">Career Reality Check™ bantu lo lihat kondisi kerja lo dari beberapa sisi.</h2>
-            <p class="crc-intro-lead">
-              Kadang kita tahu ada yang nggak beres di pekerjaan, tapi belum tentu tahu masalah utamanya ada di mana.
-              Bisa jadi kerjaannya masih oke, tapi atasannya bikin berat. Bisa jadi kantornya nggak terlalu buruk,
-              tapi badan dan pikiran lo sudah mulai kena. Bisa juga lo masih mau bertahan, tapi mulai khawatir dengan posisi lo.
-              Atau sebaliknya: lo kepikiran pergi, padahal sebenarnya masih ada beberapa hal yang bisa dibereskan dulu.
-            </p>
-            <p class="crc-intro-lead"><strong>Career Reality Check™ dibuat buat bantu lo melihat itu dengan lebih jelas.</strong></p>
-          </section>
-
-          <section class="crc-intro-section">
-            <div class="crc-intro-kicker">APA YANG DICEK?</div>
-            <h2 class="crc-intro-title">Bukan cuma rasa capek atau masalah di kantor.</h2>
-            <p class="crc-intro-lead">Ada <strong class="gold">9 area</strong> yang dibaca supaya lo bisa lihat kondisi lo secara lebih utuh.</p>
-
-            <div class="crc-area-grid">
-              <div class="crc-area-card"><div class="crc-area-no">01</div><h3>FINANSIAL</h3><p>Kalau kondisi kerja berubah, seberapa kuat pegangan uang lo?</p></div>
-              <div class="crc-area-card"><div class="crc-area-no">02</div><h3>LINGKUNGAN KERJA</h3><p>Masalah yang lo hadapi masih wajar atau sudah terlalu sering terjadi?</p></div>
-              <div class="crc-area-card"><div class="crc-area-no">03</div><h3>MANAGE OUT &amp; LAYOFF</h3><p>Ada tanda posisi lo mulai nggak aman atau sebenarnya belum?</p></div>
-              <div class="crc-area-card"><div class="crc-area-no">04</div><h3>KESEHATAN</h3><p>Seberapa jauh pekerjaan mulai berpengaruh ke kondisi tubuh lo?</p></div>
-              <div class="crc-area-card"><div class="crc-area-no">05</div><h3>STRESS &amp; KEBIASAAN</h3><p>Apa tekanan kerja sudah mulai mengubah tidur, makan, emosi, atau kebiasaan sehari-hari?</p></div>
-              <div class="crc-area-card"><div class="crc-area-no">06</div><h3>KELUARGA &amp; SUPPORT SYSTEM</h3><p>Kalau kondisi kerja berubah, seberapa siap orang-orang terdekat lo menghadapi dampaknya?</p></div>
-              <div class="crc-area-card"><div class="crc-area-no">07</div><h3>MENTAL</h3><p>Seberapa kuat kondisi pikiran lo menghadapi tekanan atau perubahan?</p></div>
-              <div class="crc-area-card"><div class="crc-area-no">08</div><h3>IDENTITAS</h3><p>Seberapa besar rasa diri lo masih bergantung pada jabatan dan pekerjaan?</p></div>
-              <div class="crc-area-card"><div class="crc-area-no">09</div><h3>RENCANA</h3><p>Kalau situasinya berubah, lo sudah tahu mau ngapain atau masih belum ada arah?</p></div>
-            </div>
-          </section>
-
-          <section class="crc-intro-section">
-            <div class="crc-intro-kicker">KENAPA PERLU DILIHAT SEMUANYA?</div>
-            <h2 class="crc-intro-title">Karena masalah karier jarang cuma punya satu alasan.</h2>
-
-            <div class="crc-why-grid">
-              <div class="crc-why-card"><b>Punya tabungan cukup, tapi kondisi mental sudah berat.</b><p>Secara uang mungkin aman. Tapi belum tentu kondisi hidupnya masih sehat untuk diteruskan.</p></div>
-              <div class="crc-why-card"><b>Lingkungan kerja nggak sehat, tapi pegangan finansial belum cukup.</b><p>Tahu ada masalah belum tentu berarti lo sudah punya ruang untuk bergerak.</p></div>
-              <div class="crc-why-card"><b>Masih nyaman kerja, tapi mulai ada tanda posisi nggak aman.</b><p>Yang terasa baik-baik saja hari ini belum tentu berarti risikonya nggak ada.</p></div>
-              <div class="crc-why-card"><b>Merasa harus pergi, padahal masih ada yang bisa diperbaiki.</b><p>Kalau masalah utamanya bisa dibaca, langkahnya juga bisa jadi berbeda.</p></div>
-            </div>
-
-            <div class="crc-question-box">
-              <small>Jadi bukan cuma:</small>
-              <strong>“Gue betah atau nggak?”</strong>
-              <small style="margin-top:15px">Tapi:</small>
-              <strong><span>“Kondisi gue secara keseluruhan sebenarnya seperti apa?”</span></strong>
-            </div>
-          </section>
-
-          <section class="crc-intro-section">
-            <div class="crc-intro-kicker">DARI HASILNYA, LO BISA LIHAT</div>
-            <h2 class="crc-intro-title">Bukan cuma skor. Lo perlu tahu apa yang harus diperhatikan.</h2>
-
-            <div class="crc-result-grid">
-              <div class="crc-result-card"><div class="crc-result-num">01</div><h3>Kondisi lo sekarang</h3><p>Gambaran area yang sedang kuat dan area yang mulai perlu perhatian.</p></div>
-              <div class="crc-result-card"><div class="crc-result-num">02</div><h3>Area yang paling perlu dibereskan</h3><p>Supaya lo nggak mencoba memperbaiki semuanya sekaligus.</p></div>
-              <div class="crc-result-card"><div class="crc-result-num">03</div><h3>Risiko yang mungkin belum kelihatan</h3><p>Termasuk finansial, kesehatan, lingkungan kerja, sampai posisi lo di perusahaan.</p></div>
-              <div class="crc-result-card"><div class="crc-result-num">04</div><h3>Prioritas lo berikutnya</h3><p>Bertahan sambil memperbaiki kondisi, mulai menyiapkan pilihan lain, atau memperkuat fondasi dulu.</p></div>
-            </div>
-          </section>
-
-          <section class="crc-intro-section">
-            <div class="crc-not-resign">
-              <div class="crc-not-resign-mark">✓</div>
-              <div>
-                <h2>Bukan tes “harus resign atau nggak”.</h2>
-                <p>
-                  Career Reality Check™ <strong>nggak mengambil keputusan buat lo.</strong> Karena kondisi setiap orang beda.
-                  Yang alat ini lakukan adalah bantu lo melihat apa yang masih aman, apa yang mulai bermasalah,
-                  dan apa yang sebaiknya jangan terus diabaikan. <strong>Setelah itu, keputusan tetap di tangan lo.</strong>
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section class="crc-final-cta">
-            <div class="crc-intro-kicker">MAU COBA DULU?</div>
-            <h2>Mulai dari <span>7 pertanyaan gratis.</span></h2>
-            <p>
-              Sekitar 3 menit. Lo akan dapat gambaran awal tentang kondisi kerja lo sekarang.
-              Kalau lo mau melihatnya lebih dalam, baru lanjut ke Career Reality Check™ lengkap.
-            </p>
-            <button class="crc-gold-btn" type="button" onclick="openContextChooser()">MULAI GRATIS →</button>
-            <div class="crc-final-meta">
-              <span>◷ ±3 menit</span><span>·</span>
-              <span>Tanpa registrasi</span><span>·</span>
-              <span>Hasil awal langsung</span><span>·</span>
-              <span>Aman &amp; pribadi</span>
-            </div>
-
-            <div class="crc-landing-signoff">
-              <b>THE <span>40</span> RESET</b>
-              <span>Baca dulu situasinya.</span>
-            </div>
-          </section>
-        </div>
       </section>
 
       <section id="freeOpening" class="crc-free-screen">
         <div class="crc-simple-opening">
           <div class="crc-simple-head">
-<h1>CAREER REALITY CHECK™</h1>
-            <p>Pilih kondisi lo. Jawab 7 pertanyaan gratis.</p>
+<h1>PILIH KONDISI LO<br><span style="color:var(--crc-gold)">SEKARANG.</span></h1>
+            <p>Nggak perlu mikir terlalu jauh. Pilih yang paling dekat dengan kondisi lo hari ini.</p>
             <div class="crc-simple-free">GRATIS · ±3 MENIT · HASIL AWAL LANGSUNG</div>
           </div>
 
@@ -1309,7 +1244,7 @@ body.crc-paid-mode #lock.crc-flow{
                 <span class="crc-context-icon">↗</span>
               </div>
               <h2>KEPIKIRAN RESIGN</h2>
-              <p>Cek apakah memang ada alasan kuat untuk bergerak, atau lo cuma lagi capek.</p>
+              <p>Lo mulai kepikiran pergi, tapi belum yakin masalah utamanya ada di mana.</p>
             </button>
 
             <button class="crc-context-card" type="button" data-context="stay" onclick="selectPreviewContext('stay')">
@@ -1318,7 +1253,7 @@ body.crc-paid-mode #lock.crc-flow{
                 <span class="crc-context-icon">◎</span>
               </div>
               <h2>MASIH MAU BERTAHAN</h2>
-              <p>Cek apakah kondisi kerja lo masih sehat dan layak dipertahankan.</p>
+              <p>Lo belum mau pergi, tapi pengin tahu kondisi ini masih layak dijalani atau nggak.</p>
             </button>
 
             <button class="crc-context-card" type="button" data-context="risk" onclick="selectPreviewContext('risk')">
@@ -1327,7 +1262,7 @@ body.crc-paid-mode #lock.crc-flow{
                 <span class="crc-context-icon">⚠</span>
               </div>
               <h2>POSISI MULAI NGGAK AMAN</h2>
-              <p>Cek signal manage out, restrukturisasi, atau layoff sebelum terlambat.</p>
+              <p>Ada perubahan akses, peran, project, atau signal perusahaan yang mulai bikin lo waspada.</p>
             </button>
           </div>
 
@@ -1394,7 +1329,13 @@ body.crc-paid-mode #lock.crc-flow{
           <button class="crc-icon-btn crc-paywall-back" type="button" onclick="backFromPaywall()" aria-label="Kembali">←</button>
           <div class="crc-result-kicker">HASIL LENGKAP</div>
           <h2 class="crc-big-title">MAU LIHAT<br>KONDISI LO<br><em>SECARA UTUH?</em></h2>
-          <p class="crc-lead">Career Reality Check membaca 9 area penting dalam kondisi lo.</p>
+          <p class="crc-lead">Career Reality Check membaca kondisi lo lebih utuh lewat 9 area — bukan cuma soal betah atau resign.</p>
+
+          <div class="crc-area-chips" aria-label="9 area Career Reality Check">
+            <span>Finansial</span><span>Lingkungan Kerja</span><span>Manage Out &amp; Layoff</span>
+            <span>Kesehatan</span><span>Stress &amp; Kebiasaan</span><span>Keluarga &amp; Support</span>
+            <span>Mental</span><span>Identitas</span><span>Rencana</span>
+          </div>
 
           <div class="crc-lock-list">
             <div>🔒 <span>9 Area Assessment Lengkap</span></div>
@@ -1416,8 +1357,8 @@ body.crc-paid-mode #lock.crc-flow{
           </div>
 
           <div class="crc-saved-note">
-            <b>✓ Jawaban preview lo sudah disimpan di browser ini.</b>
-            <span>Pakai browser/device yang sama supaya progress lo tetap ada.</span>
+            <b>✓ Tenang, progress lo otomatis tersimpan.</b>
+            <span>Setelah bayar, balik ke halaman ini dan masukkan kode akses. Nggak perlu ulang 7 pertanyaan dari awal.</span>
           </div>
 
           <div class="crc-payment-steps">
