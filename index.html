@@ -1190,6 +1190,27 @@ body.crc-paid-mode #lock.crc-flow{
 }
 </style>
 
+
+<style id="crc-opening-video-style">
+.crc-opening-video{
+  width:min(330px,100%);
+  margin:16px auto 17px;
+  border:1px solid rgba(247,184,45,.34);
+  border-radius:16px;
+  overflow:hidden;
+  background:#05080d;
+  box-shadow:0 16px 40px rgba(0,0,0,.32);
+}
+.crc-opening-video-frame{position:relative;width:100%;aspect-ratio:9/16;background:#05080d}
+.crc-opening-video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.crc-opening-video-label{padding:9px 12px;color:#d8d0c2;font-size:9px;font-weight:850;line-height:1.45;text-align:center;background:rgba(5,8,13,.96)}
+@media(max-width:640px){
+  .crc-opening-video{width:min(270px,78vw);margin:14px auto 15px}
+  #freeCover .crc-opening-card{min-height:auto}
+  #freeCover .crc-opening-content{padding-bottom:28px}
+}
+</style>
+
 </head>
 <body>
 
@@ -1218,6 +1239,13 @@ body.crc-paid-mode #lock.crc-flow{
               <span>◉ 7 pertanyaan gratis</span>
               <span>◷ ±3 menit</span>
               <span>🔒 Hasil lengkap Rp35.000</span>
+            </div>
+
+            <div class="crc-opening-video">
+              <div class="crc-opening-video-frame">
+                <iframe src="https://www.youtube.com/embed/6gZfLlo524Q?rel=0&modestbranding=1&playsinline=1" title="Career Reality Check — The 40 Reset" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <div class="crc-opening-video-label">Tonton sebentar sebelum mulai. Biar lo tahu apa yang sebenarnya sedang kita baca.</div>
             </div>
 
             <button class="crc-gold-btn" type="button" onclick="openContextChooser()">MULAI 7 PERTANYAAN GRATIS →</button>
